@@ -1,0 +1,233 @@
+% WageNominalGDP.m
+%
+%   For now, we are going to use nominal GDP per person for the wage series
+%   to deflate R&D spending. After all, model says we want something rising
+%   with A = LA TFP in the economy.
+%
+%   Note well: Any wage program should save the following three variables
+%     WageYears=(1929:2015)'
+%     WageScientist=NominalGDPperPerson;
+%     WageNotes={'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+%   into the .mat file WageScientistData.mat
+%
+%   That way we can easily change the wage deflator by just running a different wage program
+%   and then rerunning the idea TFP programs.
+
+clear;
+diarychad('WageNominalGDP');
+
+
+
+% FRED Graph Observations	
+% Federal Reserve Economic Data	
+% Link: https://fred.stlouisfed.org	
+% Help: https://fred.stlouisfed.org/help-faq	
+% Economic Research Division	
+% Federal Reserve Bank of St. Louis	
+	
+% GDPA	Gross Domestic Product, Billions of Dollars, Annual, Not Seasonally Adjusted
+	
+% Frequency: Annual	
+% observation_date	GDPA
+datagdp=[
+1929-01-01	104.6
+1930-01-01	92.2
+1931-01-01	77.4
+1932-01-01	59.5
+1933-01-01	57.2
+1934-01-01	66.8
+1935-01-01	74.3
+1936-01-01	84.9
+1937-01-01	93.0
+1938-01-01	87.4
+1939-01-01	93.5
+1940-01-01	102.9
+1941-01-01	129.4
+1942-01-01	166.0
+1943-01-01	203.1
+1944-01-01	224.6
+1945-01-01	228.2
+1946-01-01	227.8
+1947-01-01	249.9
+1948-01-01	274.8
+1949-01-01	272.8
+1950-01-01	300.2
+1951-01-01	347.3
+1952-01-01	367.7
+1953-01-01	389.7
+1954-01-01	391.1
+1955-01-01	426.2
+1956-01-01	450.1
+1957-01-01	474.9
+1958-01-01	482.0
+1959-01-01	522.5
+1960-01-01	543.3
+1961-01-01	563.3
+1962-01-01	605.1
+1963-01-01	638.6
+1964-01-01	685.8
+1965-01-01	743.7
+1966-01-01	815.0
+1967-01-01	861.7
+1968-01-01	942.5
+1969-01-01	1019.9
+1970-01-01	1075.9
+1971-01-01	1167.8
+1972-01-01	1282.4
+1973-01-01	1428.5
+1974-01-01	1548.8
+1975-01-01	1688.9
+1976-01-01	1877.6
+1977-01-01	2086.0
+1978-01-01	2356.6
+1979-01-01	2632.1
+1980-01-01	2862.5
+1981-01-01	3211.0
+1982-01-01	3345.0
+1983-01-01	3638.1
+1984-01-01	4040.7
+1985-01-01	4346.7
+1986-01-01	4590.2
+1987-01-01	4870.2
+1988-01-01	5252.6
+1989-01-01	5657.7
+1990-01-01	5979.6
+1991-01-01	6174.0
+1992-01-01	6539.3
+1993-01-01	6878.7
+1994-01-01	7308.8
+1995-01-01	7664.1
+1996-01-01	8100.2
+1997-01-01	8608.5
+1998-01-01	9089.2
+1999-01-01	9660.6
+2000-01-01	10284.8
+2001-01-01	10621.8
+2002-01-01	10977.5
+2003-01-01	11510.7
+2004-01-01	12274.9
+2005-01-01	13093.7
+2006-01-01	13855.9
+2007-01-01	14477.6
+2008-01-01	14718.6
+2009-01-01	14418.7
+2010-01-01	14964.4
+2011-01-01	15517.9
+2012-01-01	16155.3
+2013-01-01	16663.2
+2014-01-01	17348.1
+2015-01-01	17947.0
+ ];
+
+% Population from BEA.gov NIPA Supplementary Table 7.1
+%  Saved in WageSci/
+
+datapop=[
+%	Population (midperiod, thousands)
+1929	121878
+1930	123188
+1931	124149
+1932	124949
+1933	125690
+1934	126485
+1935	127362
+1936	128181
+1937	128961
+1938	129969
+1939	131028
+1940	132122
+1941	133402
+1942	134860
+1943	136739
+1944	138397
+1945	139928
+1946	141389
+1947	144126
+1948	146631
+1949	149188
+1950	151684
+1951	154287
+1952	156954
+1953	159565
+1954	162391
+1955	165275
+1956	168221
+1957	171274
+1958	174141
+1959	177130
+1960	180760
+1961	183742
+1962	186590
+1963	189300
+1964	191927
+1965	194347
+1966	196599
+1967	198752
+1968	200745
+1969	202736
+1970	205089
+1971	207692
+1972	209924
+1973	211939
+1974	213898
+1975	215981
+1976	218086
+1977	220289
+1978	222629
+1979	225106
+1980	227726
+1981	230008
+1982	232218
+1983	234333
+1984	236394
+1985	238506
+1986	240683
+1987	242843
+1988	245061
+1989	247387
+1990	250181
+1991	253530
+1992	256922
+1993	260282
+1994	263455
+1995	266588
+1996	269714
+1997	272958
+1998	276154
+1999	279328
+2000	282398
+2001	285225
+2002	287955
+2003	290626
+2004	293262
+2005	295993
+2006	298818
+2007	301696
+2008	304543
+2009	307240
+2010	309807
+2011	312169
+2012	314490
+2013	316796
+2014	319233
+2015	321704
+ ];
+
+ngdpyears=datapop(:,1);
+pop=datapop(:,2);
+ngdp=datagdp(:,2);
+
+NominalGDPperPerson=ngdp*10^9./(pop*10^3);
+
+disp 'Nominal GDP Per Person';
+cshow(' ',[ngdpyears NominalGDPperPerson],'%8.0f');
+
+WageYears=ngdpyears;
+WageScientist=NominalGDPperPerson;
+WageNotes={
+    'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+
+save WageScientistData WageYears WageScientist WageNotes NominalGDPperPerson;
+save NominalGDPData NominalGDPperPerson ngdpyears;
+
+diary off;

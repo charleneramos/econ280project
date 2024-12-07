@@ -1,0 +1,66 @@
+"Notes"	"Year"	"Year Code"	Deaths	Population	Crude Rate	Age Adjusted Rate
+	"1999"	"1999"	963418	28707163	3356.0	2970.6
+	"2000"	"2000"	969745	28932240	3351.8	2961.4
+	"2001"	"2001"	970395	29287739	3313.3	2931.8
+	"2002"	"2002"	978185	29996494	3261.0	2922.4
+	"2003"	"2003"	978287	30604011	3196.6	2886.3
+	"2004"	"2004"	950204	31192162	3046.3	2779.6
+	"2005"	"2005"	968899	31826101	3044.4	2789.2
+	"2006"	"2006"	953535	32488743	2935.0	2702.1
+	"2007"	"2007"	948643	33178410	2859.2	2644.5
+	"2008"	"2008"	972824	33921558	2867.9	2666.6
+	"2009"	"2009"	946710	34709035	2727.6	2557.4
+	"2010"	"2010"	964211	35348441	2727.7	2566.0
+	"2011"	"2011"	984210	36359460	2706.9	2558.0
+	"2012"	"2012"	991338	37209107	2664.2	2528.9
+	"2013"	"2013"	1007727	38046718	2648.7	2525.2
+"Total"			14548331	491807382	2958.1	2723.3
+"---"
+"Dataset: Compressed Mortality, 1999-2013"
+"Query Parameters:"
+"Title:"
+"2013 Urbanization: All"
+"Age Group: 55-64 years, 65-74 years, 75-84 years, 85+ years"
+"Gender: Female"
+"Hispanic Origin: All"
+"ICD-10 Codes: All"
+"Race: White"
+"States: All"
+"Year: All, 1999 to 2013"
+"Group By: Year"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Standard Population: 2000 U.S. Std. Population"
+"Calculate Rates Per: 100,000"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/cmf.html for more information."
+"---"
+"Query Date: Oct 22, 2015 11:50:21 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Compressed Mortality File"
+"1999-2013 on CDC WONDER Online Database, released October 2014. Data are from the Compressed Mortality File 1999-2013 Series 20"
+"No. 2S, 2014, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative"
+"Program. Accessed at http://wonder.cdc.gov/cmf-icd10.html on Oct 22, 2015 11:50:21 PM"
+"---"
+Caveats:
+"1. About national population figures: population figures for 1999 are from the 1990-1999 series of bridged-race intercensal"
+"estimates of the July 1 resident population; population figures for 2000 and 2010 are bridged-race April 1 census counts;"
+"population figures for 2001-2009 are from the revised 2000-2009 series of bridged-race intercensal estimates of the July 1"
+"resident population; population figures for 2011 are bridged-race postcensal estimates of the July 1 resident population, from"
+"the Vintage 2011 series released by NCHS on July 18, 2012; population figures for 2012 are bridged-race postcensal estimates of"
+"the July 1 resident population, from the Vintage 2012 series released by NCHS on June 13, 2013; and population figures for 2013"
+"are bridged-race postcensal estimates of the July 1 resident population, from the Vintage 2013 series released by NCHS on June"
+"26, 2014. More information: http://wonder.cdc.gov/wonder/help/cmf.html#Population Information."
+"2. The populations used to calculate standard age-adjusted rates are documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/cmf.html#2000 Standard Population."
+"3. The method used to calculate age-adjusted rates is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/cmf.html#Age-Adjusted Rates."
+"4. Deaths of persons with Age ""Not Stated"" are included in ""All"" counts and rates, but are not distributed among age groups,"
+"so are not included in age-specific counts, age-specific rates or in any age-adjusted rates. More information:"
+"http://wonder.cdc.gov/wonder/help/cmf.html#Not Stated."
+"5. Information included on the death certificate about the race and Hispanic ethnicity of the decedent is reported by the"
+"funeral director as provided by an informant, often the surviving next of kin, or, in the absence of an informant, on the basis"
+"of observation. Race and ethnicity information from the census is by self-report. To the extent that race and Hispanic origin"
+"are inconsistent between these two data sources, death rates will be biased. More information:"
+"http://wonder.cdc.gov/wonder/help/cmf.html#Racial Differences."

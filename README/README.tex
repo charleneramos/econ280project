@@ -1,0 +1,124 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{readme}{%
+\section{README}\label{readme}}
+
+\hypertarget{overview}{%
+\subsection{Overview}\label{overview}}
+
+\begin{quote}
+The code in this replication package contains completed assignments for ECON 280 Computation at UC San Diego with David Arnold. The paper chosen for this project is an AER 2020 article by Bloom et al. ``Are Ideas Getting Harder to Find?'' There are files to generate charts which are then automatically included within PDF outputs when compiled using LaTeX. 
+\end{quote}
+
+\hypertarget{data-availability}{%
+\subsection{Data Availability}\label{data-availability}}
+  All data \textbf{are} publicly available.
+
+\begin{quote}
+All data is located within the original replication package for Bloom et. al. (2020) and can be downloaded from OPENICPSR: 
+https://www.openicpsr.org/openicpsr/project/111743/version/V2/view. 
+\end{quote}
+
+\hypertarget{computational-requirements}{%
+\subsection{Computational
+requirements}\label{computational-requirements}}
+
+\begin{itemize}
+\item
+  Python
+\item
+  Matlab 
+\item
+  R
+\item
+  LaTeX
+\end{itemize}
+
+\hypertarget{description-of-code}{%
+\subsection{Description of
+code}\label{description-of-code}}
+
+\begin{itemize}
+\tightlist
+\item
+  Programs in \texttt{code/01\_build} include the original replication package for Bloom et al. 2020 downloaded from OPENICPSR.
+\item
+  Programs in \texttt{code/02\_analysis} generate charts for Parts 2 through 4 assignments.
+\end{itemize}
+
+\hypertarget{instructions-to-replicators}{%
+\subsection{Instructions to
+Replicators}\label{instructions-to-replicators}}
+
+\begin{itemize}
+\tightlist
+\item
+  Run \texttt{histogram.r}, \texttt{main\_result.r}, \texttt{main\_result.py}, and \texttt{main\_result.m} in \texttt{code/02\_analysis} to update all charts.
+\item
+  Compile \texttt{part2.tex}, \texttt{part3.tex}, and \texttt{part4.tex} in \texttt{output/} to create PDF outputs for Parts 2 through 4 assignments.
+\end{itemize}
+
+\hypertarget{reference}{%
+\subsection{Reference}\label{reference}}
+
+Bloom, Nicholas, Charles I. Jones, John Van Reenen, and Michael Webb. ``Are Ideas Getting Harder to Find?'' \emph{American Economic Review} 2020, 110 (4): 1104–1144.
+
+\end{document}

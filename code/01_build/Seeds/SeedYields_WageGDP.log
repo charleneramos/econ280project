@@ -1,0 +1,728 @@
+SeedYields_WageGDP                 23-Oct-2024 
+ 
+  SeedYields.m
+ 
+   Loads the data from the "Export" tab of the file "Seed Data v?.xlsx"
+   See that file for all the details.
+ 
+  Briefly, here is the structure:
+  4 crops: Corn, Soybeans, Cotton, Wheat
+  Columns:
+   (1) = Realized average yields (bushels/acre, except cotton = lb/acre)
+   (2) = Total R&D (seed efficiency only), Sum of public + private
+   (3) = Total R&D (seed efficiency and crop protection), Sum of public + private
+    The R&D units are millions of nominal dollars.
+ 
+  Idea output = Average (smoothed) Seed Yield growth over next 5 years
+
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = WageGDP
+   Wage deflator is nominal GDP per person
+             Lambda =  1.0000
+=============================================================
+ 
+ 
+
+SlideFigures =
+
+     0
+
+
+YieldUnits =
+
+  1×4 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'bushels/acre'}    {'bushels/acre'}    {'lbs/acre'}    {'bushels/acre'}
+
+
+HPSmoother =
+
+   400
+
+
+WageNotes =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 135)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',135,0)">line 135</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+
+LW =
+
+     3
+
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 157)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',157,0)">line 157</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 165)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',165,0)">line 165</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 167)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 176)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',176,0)">line 176</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 178)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',178,0)">line 178</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 188)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',188,0)">line 188</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 197)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',197,0)">line 197</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 229)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',229,0)">line 229</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 237)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',237,0)">line 237</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 269)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',269,0)">line 269</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 276)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',276,0)">line 276</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 309)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',309,0)">line 309</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+ 
+Corn
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+  Year AvgYldGrwth Scientists1 Scientists2[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP1[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP2
+------------------------------------------------------------------
+  1960     0.03292         NaN         NaN         NaN         NaN
+  1961     0.03230         NaN         NaN         NaN         NaN
+  1962     0.03145         NaN         NaN         NaN         NaN
+  1963     0.03039         NaN         NaN         NaN         NaN
+  1964     0.02914         NaN         NaN         NaN         NaN
+  1965     0.02773         NaN         NaN         NaN         NaN
+  1966     0.02628         NaN         NaN         NaN         NaN
+  1967     0.02482         NaN         NaN         NaN         NaN
+  1968     0.02341         NaN         NaN         NaN         NaN
+  1969     0.02215     1.00000     1.00000     1.00000     1.00000
+  1970     0.02114         NaN         NaN         NaN         NaN
+  1971     0.02034         NaN         NaN         NaN         NaN
+  1972     0.01975         NaN         NaN         NaN         NaN
+  1973     0.01931         NaN         NaN         NaN         NaN
+  1974     0.01889         NaN         NaN         NaN         NaN
+  1975     0.01835         NaN         NaN         NaN         NaN
+  1976     0.01772         NaN         NaN         NaN         NaN
+  1977     0.01700         NaN         NaN         NaN         NaN
+  1978     0.01628         NaN         NaN         NaN         NaN
+  1979     0.01568         NaN         NaN         NaN         NaN
+  1980     0.01519         NaN         NaN         NaN         NaN
+  1981     0.01475         NaN         NaN         NaN         NaN
+  1982     0.01439         NaN         NaN         NaN         NaN
+  1983     0.01414         NaN         NaN         NaN         NaN
+  1984     0.01403     2.67675     1.47862     0.23671     0.42851
+  1985     0.01408         NaN         NaN         NaN         NaN
+  1986     0.01431         NaN         NaN         NaN         NaN
+  1987     0.01470         NaN         NaN         NaN         NaN
+  1988     0.01517         NaN         NaN         NaN         NaN
+  1989     0.01563         NaN         NaN         NaN         NaN
+  1990     0.01605         NaN         NaN         NaN         NaN
+  1991     0.01644         NaN         NaN         NaN         NaN
+  1992     0.01675         NaN         NaN         NaN         NaN
+  1993     0.01698         NaN         NaN         NaN         NaN
+  1994     0.01704     4.63474     1.70118     0.16602     0.45230
+  1995     0.01698     5.31853     1.87256     0.14416     0.40945
+  1996     0.01677     6.46963     2.10710     0.11701     0.35925
+  1997     0.01642     7.71564     2.37396     0.09607     0.31224
+  1998     0.01596     9.30521     2.55928     0.07743     0.28153
+  1999     0.01538     9.61078     2.51017     0.07225     0.27664
+  2000     0.01466    10.03343     2.51291     0.06598     0.26344
+  2001     0.01384     9.73085     2.28698     0.06420     0.27317
+  2002     0.01294     9.78009     2.28818     0.05972     0.25527
+  2003     0.01200     9.44125     2.23536     0.05739     0.24238
+  2004     0.01111     9.52565     2.28629     0.05265     0.21936
+  2005     0.01035     9.14194     2.21021     0.05111     0.21139
+  2006     0.00979     9.98311     2.43928     0.04430     0.18130
+  2007     0.00951    10.65714     2.47747     0.04030     0.17335
+  2008     0.00953    12.85235     2.93960     0.03348     0.14638
+  2009     0.00976    14.41501     3.30956     0.03056     0.13310
+  2010     0.01009    15.78016         NaN     0.02886         NaN
+  2011         NaN    17.45232         NaN         NaN         NaN
+  2012         NaN    17.89491         NaN         NaN         NaN
+  2013         NaN    17.93552         NaN         NaN         NaN
+  2014         NaN    18.34541         NaN         NaN         NaN
+ 
+Seed efficiency only:
+  The implied average growth rate of scientists is     6.67 percent
+  The implied average growth rate of idea TFP   is    -8.72 percent
+  The factor increase in research is   14.415
+  The factor decline in idea TFP is   32.723
+      Half life of idea TFP =     7.95 years
+      Implied beta =     6.32
+ 
+Corn &    14.4 &     6.7 &    32.7 &    -8.7\\
+Corn    14.4     6.7    32.7    -8.7
+ 
+Seed efficiency and crop protection:
+  The implied average growth rate of scientists is     2.99 percent
+  The implied average growth rate of idea TFP   is    -5.04 percent
+  The factor increase in research is    3.310
+  The factor decline in idea TFP is    7.513
+      Half life of idea TFP =    13.75 years
+      Implied beta =     3.66
+ 
+Corn &     3.3 &     3.0 &     7.5 &    -5.0\\
+Corn     3.3     3.0     7.5    -5.0
+ 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 157)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',157,0)">line 157</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 165)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',165,0)">line 165</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 167)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 176)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',176,0)">line 176</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 178)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',178,0)">line 178</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 188)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',188,0)">line 188</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 197)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',197,0)">line 197</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 229)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',229,0)">line 229</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 237)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',237,0)">line 237</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 269)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',269,0)">line 269</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 276)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',276,0)">line 276</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 309)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',309,0)">line 309</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+ 
+Soybeans
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+  Year AvgYldGrwth Scientists1 Scientists2[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP1[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP2
+------------------------------------------------------------------
+  1960     0.01054         NaN         NaN         NaN         NaN
+  1961     0.01070         NaN         NaN         NaN         NaN
+  1962     0.01089         NaN         NaN         NaN         NaN
+  1963     0.01106         NaN         NaN         NaN         NaN
+  1964     0.01115         NaN         NaN         NaN         NaN
+  1965     0.01112         NaN         NaN         NaN         NaN
+  1966     0.01097         NaN         NaN         NaN         NaN
+  1967     0.01074         NaN         NaN         NaN         NaN
+  1968     0.01047         NaN         NaN         NaN         NaN
+  1969     0.01026     1.00000     1.00000     1.00000     1.00000
+  1970     0.01017         NaN         NaN         NaN         NaN
+  1971     0.01018         NaN         NaN         NaN         NaN
+  1972     0.01028         NaN         NaN         NaN         NaN
+  1973     0.01041         NaN         NaN         NaN         NaN
+  1974     0.01053         NaN         NaN         NaN         NaN
+  1975     0.01061         NaN         NaN         NaN         NaN
+  1976     0.01073         NaN         NaN         NaN         NaN
+  1977     0.01093         NaN         NaN         NaN         NaN
+  1978     0.01125         NaN         NaN         NaN         NaN
+  1979     0.01175         NaN         NaN         NaN         NaN
+  1980     0.01240         NaN         NaN         NaN         NaN
+  1981     0.01306         NaN         NaN         NaN         NaN
+  1982     0.01370         NaN         NaN         NaN         NaN
+  1983     0.01431         NaN         NaN         NaN         NaN
+  1984     0.01486     3.71862     2.87992     0.38949     0.50292
+  1985     0.01532         NaN         NaN         NaN         NaN
+  1986     0.01570         NaN         NaN         NaN         NaN
+  1987     0.01593         NaN         NaN         NaN         NaN
+  1988     0.01597         NaN         NaN         NaN         NaN
+  1989     0.01575         NaN         NaN         NaN         NaN
+  1990     0.01527         NaN         NaN         NaN         NaN
+  1991     0.01462         NaN         NaN         NaN         NaN
+  1992     0.01386         NaN         NaN         NaN         NaN
+  1993     0.01305         NaN         NaN         NaN         NaN
+  1994     0.01226     5.81458     2.80105     0.20556     0.42672
+  1995     0.01160     6.36166     2.88277     0.17778     0.39233
+  1996     0.01109     7.21958     3.09149     0.14974     0.34969
+  1997     0.01076     8.29545     3.38914     0.12637     0.30930
+  1998     0.01062     9.61627     3.44455     0.10765     0.30052
+  1999     0.01068    10.17914     3.45508     0.10223     0.30117
+  2000     0.01081    10.41166     3.35639     0.10123     0.31403
+  2001     0.01097    10.25789     3.10500     0.10425     0.34440
+  2002     0.01112    10.49161     3.19284     0.10331     0.33947
+  2003     0.01124    10.17401     3.12393     0.10772     0.35083
+  2004     0.01135    10.35127     3.26166     0.10685     0.33909
+  2005     0.01148     9.98482     3.18579     0.11208     0.35129
+  2006     0.01170    10.53948     3.48994     0.10816     0.32663
+  2007     0.01201    11.24862     3.54568     0.10406     0.33012
+  2008     0.01241    13.21630     4.09309     0.09149     0.29542
+  2009     0.01282    14.67298     4.57337     0.08514     0.27317
+  2010     0.01320    15.56467         NaN     0.08263         NaN
+  2011         NaN    16.75175         NaN         NaN         NaN
+  2012         NaN    17.14080         NaN         NaN         NaN
+  2013         NaN    16.99269         NaN         NaN         NaN
+  2014         NaN    17.33284         NaN         NaN         NaN
+ 
+Seed efficiency only:
+  The implied average growth rate of scientists is     6.72 percent
+  The implied average growth rate of idea TFP   is    -6.16 percent
+  The factor increase in research is   14.673
+  The factor decline in idea TFP is   11.745
+      Half life of idea TFP =    11.26 years
+      Implied beta =     5.33
+ 
+Soybeans &    14.7 &     6.7 &    11.7 &    -6.2\\
+Soybeans    14.7     6.7    11.7    -6.2
+ 
+Seed efficiency and crop protection:
+  The implied average growth rate of scientists is     3.80 percent
+  The implied average growth rate of idea TFP   is    -3.24 percent
+  The factor increase in research is    4.573
+  The factor decline in idea TFP is    3.661
+      Half life of idea TFP =    21.37 years
+      Implied beta =     2.81
+ 
+Soybeans &     4.6 &     3.8 &     3.7 &    -3.2\\
+Soybeans     4.6     3.8     3.7    -3.2
+ 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 157)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',157,0)">line 157</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 165)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',165,0)">line 165</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 167)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 176)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',176,0)">line 176</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 178)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',178,0)">line 178</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 188)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',188,0)">line 188</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 197)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',197,0)">line 197</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 229)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',229,0)">line 229</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 237)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',237,0)">line 237</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 269)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',269,0)">line 269</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 276)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',276,0)">line 276</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 309)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',309,0)">line 309</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+ 
+Cotton
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+  Year AvgYldGrwth Scientists1 Scientists2[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP1[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP2
+------------------------------------------------------------------
+  1960     0.00154         NaN         NaN         NaN         NaN
+  1961     0.00094         NaN         NaN         NaN         NaN
+  1962     0.00029         NaN         NaN         NaN         NaN
+  1963    -0.00027         NaN         NaN         NaN         NaN
+  1964    -0.00061         NaN         NaN         NaN         NaN
+  1965    -0.00059         NaN         NaN         NaN         NaN
+  1966    -0.00018         NaN         NaN         NaN         NaN
+  1967     0.00059         NaN         NaN         NaN         NaN
+  1968     0.00162         NaN         NaN         NaN         NaN
+  1969     0.00290     1.00000     1.00000     1.00000     1.00000
+  1970     0.00438         NaN         NaN         NaN         NaN
+  1971     0.00604         NaN         NaN         NaN         NaN
+  1972     0.00786         NaN         NaN         NaN         NaN
+  1973     0.00983         NaN         NaN         NaN         NaN
+  1974     0.01195         NaN         NaN         NaN         NaN
+  1975     0.01406         NaN         NaN         NaN         NaN
+  1976     0.01610         NaN         NaN         NaN         NaN
+  1977     0.01791         NaN         NaN         NaN         NaN
+  1978     0.01937         NaN         NaN         NaN         NaN
+  1979     0.02037         NaN         NaN         NaN         NaN
+  1980     0.02084         NaN         NaN         NaN         NaN
+  1981     0.02074         NaN         NaN         NaN         NaN
+  1982     0.02016         NaN         NaN         NaN         NaN
+  1983     0.01917         NaN         NaN         NaN         NaN
+  1984     0.01786     1.07948     0.78639     5.71443     7.84424
+  1985     0.01641         NaN         NaN         NaN         NaN
+  1986     0.01492         NaN         NaN         NaN         NaN
+  1987     0.01348         NaN         NaN         NaN         NaN
+  1988     0.01222         NaN         NaN         NaN         NaN
+  1989     0.01123         NaN         NaN         NaN         NaN
+  1990     0.01056         NaN         NaN         NaN         NaN
+  1991     0.01031         NaN         NaN         NaN         NaN
+  1992     0.01045         NaN         NaN         NaN         NaN
+  1993     0.01098         NaN         NaN         NaN         NaN
+  1994     0.01186     2.91154     1.04825     1.40694     3.90781
+  1995     0.01303     3.22319     1.00651     1.39579     4.46982
+  1996     0.01431     3.75018     1.06399     1.31779     4.64474
+  1997     0.01559     4.23043     1.13194     1.27284     4.75702
+  1998     0.01672     4.88731     1.07600     1.18136     5.36588
+  1999     0.01749     4.92370     1.01369     1.22677     5.95869
+  2000     0.01775     5.02006     0.96760     1.22069     6.33314
+  2001     0.01745     4.82112     0.86364     1.24959     6.97560
+  2002     0.01665     4.81060     0.86280     1.19511     6.66343
+  2003     0.01544     4.67607     0.84346     1.14020     6.32121
+  2004     0.01400     4.68611     0.84351     1.03175     5.73190
+  2005     0.01253     4.50158     0.79998     0.96129     5.40933
+  2006     0.01114     4.82753     0.77543     0.79720     4.96306
+  2007     0.00991     5.10531     0.83636     0.67052     4.09295
+  2008     0.00887     6.04049     0.96516     0.50681     3.17187
+  2009     0.00801     6.64390     1.04281     0.41646     2.65335
+  2010     0.00735     7.31307         NaN     0.34704         NaN
+  2011         NaN     7.98566         NaN         NaN         NaN
+  2012         NaN     8.07551         NaN         NaN         NaN
+  2013         NaN     8.06268         NaN         NaN         NaN
+  2014         NaN     8.24544         NaN         NaN         NaN
+ 
+Seed efficiency only:
+  The implied average growth rate of scientists is     4.73 percent
+  The implied average growth rate of idea TFP   is    -2.19 percent
+  The factor increase in research is    6.644
+  The factor decline in idea TFP is    2.401
+      Half life of idea TFP =    31.65 years
+      Implied beta =     1.63
+ 
+Cotton &     6.6 &     4.7 &     2.4 &    -2.2\\
+Cotton     6.6     4.7     2.4    -2.2
+ 
+Seed efficiency and crop protection:
+  The implied average growth rate of scientists is     0.10 percent
+  The implied average growth rate of idea TFP   is     2.44 percent
+  The factor increase in research is    1.043
+  The factor decline in idea TFP is    0.377
+      Half life of idea TFP =   -28.41 years
+      Implied beta =    -1.82
+ 
+Cotton &     1.0 &     0.1 &     0.4 &     2.4\\
+Cotton     1.0     0.1     0.4     2.4
+ 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 157)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',157,0)">line 157</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 165)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',165,0)">line 165</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 167)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 176)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',176,0)">line 176</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 178)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',178,0)">line 178</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 188)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',188,0)">line 188</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 197)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',197,0)">line 197</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 229)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',229,0)">line 229</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 237)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',237,0)">line 237</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 269)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',269,0)">line 269</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 276)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',276,0)">line 276</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 309)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',309,0)">line 309</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)] 
+ 
+Wheat
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+  Year AvgYldGrwth Scientists1 Scientists2[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP1[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SeedYields', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m', 314)" style="font-weight:bold">SeedYields</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Seeds/SeedYields.m',314,0)">line 314</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 43)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',43,0)">line 43</a>)
+] 
+    IdeaTFP2
+------------------------------------------------------------------
+  1960     0.01824         NaN         NaN         NaN         NaN
+  1961     0.01845         NaN         NaN         NaN         NaN
+  1962     0.01864         NaN         NaN         NaN         NaN
+  1963     0.01876         NaN         NaN         NaN         NaN
+  1964     0.01873         NaN         NaN         NaN         NaN
+  1965     0.01847         NaN         NaN         NaN         NaN
+  1966     0.01797         NaN         NaN         NaN         NaN
+  1967     0.01721         NaN         NaN         NaN         NaN
+  1968     0.01629         NaN         NaN         NaN         NaN
+  1969     0.01537     1.00000     1.00000     1.00000     1.00000
+  1970     0.01461         NaN         NaN         NaN         NaN
+  1971     0.01409         NaN         NaN         NaN         NaN
+  1972     0.01385         NaN         NaN         NaN         NaN
+  1973     0.01383         NaN         NaN         NaN         NaN
+  1974     0.01390         NaN         NaN         NaN         NaN
+  1975     0.01391         NaN         NaN         NaN         NaN
+  1976     0.01377         NaN         NaN         NaN         NaN
+  1977     0.01341         NaN         NaN         NaN         NaN
+  1978     0.01278         NaN         NaN         NaN         NaN
+  1979     0.01187         NaN         NaN         NaN         NaN
+  1980     0.01078         NaN         NaN         NaN         NaN
+  1981     0.00961         NaN         NaN         NaN         NaN
+  1982     0.00850         NaN         NaN         NaN         NaN
+  1983     0.00756         NaN         NaN         NaN         NaN
+  1984     0.00693     2.33731     1.49049     0.19289     0.30247
+  1985     0.00662         NaN         NaN         NaN         NaN
+  1986     0.00658         NaN         NaN         NaN         NaN
+  1987     0.00675         NaN         NaN         NaN         NaN
+  1988     0.00704         NaN         NaN         NaN         NaN
+  1989     0.00737         NaN         NaN         NaN         NaN
+  1990     0.00772         NaN         NaN         NaN         NaN
+  1991     0.00811         NaN         NaN         NaN         NaN
+  1992     0.00847         NaN         NaN         NaN         NaN
+  1993     0.00876         NaN         NaN         NaN         NaN
+  1994     0.00893     3.49057     1.44383     0.16649     0.40250
+  1995     0.00894     3.51677     1.47858     0.16551     0.39367
+  1996     0.00882     3.58610     1.45342     0.16014     0.39511
+  1997     0.00865     3.68245     1.48440     0.15279     0.37903
+  1998     0.00851     3.72717     1.32100     0.14863     0.41937
+  1999     0.00845     3.63701     1.23656     0.15116     0.44459
+  2000     0.00846     3.60485     1.21610     0.15279     0.45290
+  2001     0.00856     3.42555     1.08622     0.16255     0.51264
+  2002     0.00870     3.46233     1.12272     0.16359     0.50449
+  2003     0.00884     3.44377     1.15286     0.16702     0.49892
+  2004     0.00894     3.33676     1.13975     0.17443     0.51065
+  2005     0.00898     3.18069     1.08109     0.18383     0.54084
+  2006     0.00892     3.26026     1.13174     0.17803     0.51286
+  2007     0.00873     3.15928     1.06738     0.17977     0.53209
+  2008     0.00843     3.43294     1.12096     0.15978     0.48933
+  2009     0.00809     3.84654     1.24326     0.13688     0.42350
+  2010     0.00778     3.94878         NaN     0.12829         NaN
+  2011         NaN     4.22365         NaN         NaN         NaN
+  2012         NaN     4.31314         NaN         NaN         NaN
+  2013         NaN     4.23987         NaN         NaN         NaN
+  2014         NaN     4.42187         NaN         NaN         NaN
+ 
+Seed efficiency only:
+  The implied average growth rate of scientists is     3.37 percent
+  The implied average growth rate of idea TFP   is    -4.97 percent
+  The factor increase in research is    3.847
+  The factor decline in idea TFP is    7.306
+      Half life of idea TFP =    13.94 years
+      Implied beta =     5.55
+ 
+Wheat &     3.8 &     3.4 &     7.3 &    -5.0\\
+Wheat     3.8     3.4     7.3    -5.0
+ 
+Seed efficiency and crop protection:
+  The implied average growth rate of scientists is     0.54 percent
+  The implied average growth rate of idea TFP   is    -2.15 percent
+  The factor increase in research is    1.243
+  The factor decline in idea TFP is    2.361
+      Half life of idea TFP =    32.27 years
+      Implied beta =     2.40
+ 
+Wheat &     1.2 &     0.5 &     2.4 &    -2.1\\
+Wheat     1.2     0.5     2.4    -2.1
+ 

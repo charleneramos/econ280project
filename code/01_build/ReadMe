@@ -1,0 +1,152 @@
+
+Bloom, Jones, Van Reenen, Webb
+"Are Ideas Getting Harder to Find?"
+openicpsr-111743
+https://www.openicpsr.org/openicpsr/project/111743/
+
+
+This ReadMe file summarizes the programs and data files included in the
+data repository. See the Online Appendix file IdeaPFDataAppendix.pdf for
+details and replication instructions. Data sets (sources, files, and
+instructions for obtaining the data) are discussed in detail in the
+online appendix.
+
+Files formats:
+*.m   = matlab programs
+*.mat = matlab data files
+*.xls = data spreadsheets
+*.csv = data CSV files
+
+MasterIdeaPF.m: Master program for all results other than Census
+
+Note: The first time you run MasterIdeaPF.m, most results will show up
+quickly. The CompuStat data, however, gets cleaned in CompustatRead.m
+and this takes ~10 minutes, so the program will appear to pause when
+that happens.
+
+itfp.do: Stata program for Census results
+
+Subdirectories:
+   Aggregate/   = Aggregate U.S. 
+   Compustat/   = Compustat firm-level 
+   ChadMatlab/  = various general matlab functions
+   MooresLaw/   = Moore's law case
+   Mortality/   = Mortality rate cases
+   Pharma/      = New Molecular entities case
+   Seeds/       = Agriculture and seed cases
+   Patents/     = Patent data used to allocate R&D in Moore's Law
+   WageSci/     = Wage deflators for converting R&D into effective research   
+
+
+Guide to Figures and Tables
+---------------------------
+
+Figures are stored as *.eps files. Program output is saved in *.log
+files. The appendage "_Main" is used for the main results. The appendage
+"_Lambda" is used for the robustness results in Appendix Table A1.
+
+The programs listed below should not be run individually but instead
+called by MasterIdeaPF.m.
+
+Figure 1:   Subdirectory: Aggregate/
+   Files:   AggregateBLSIPP.m   AggregateBLSIPP2.eps
+
+Figure 2:   Subdirectory: Aggregate/
+   Files:   AggregateBLSIPP.m   AggregateBLSIPP.eps
+
+Figure 3:   Subdirectory: MooresLaw/ 
+   Files:   MooresLaw.eps (from Wikipedia, as referenced in paper)
+
+Figure 4:   Subdirectory: MooresLaw/
+   Files:   IntelGraph.m   IntelGraph.eps
+
+Figure 5:   Subdirectory: Seeds/
+   Files:   AgIdeaPF.m   AgIdeaTFP.eps 
+
+Figure 6:   Subdirectory: Seeds/
+   Files:   SeedYields.m
+            SeedData_Corn.eps, SeedData_Soybeans.eps, SeedData_Cotton.eps, SeedData_Wheat.eps
+
+Figure 7:   Subdirectory: Mortality/
+   Files:   LifeExpectancy.m   LifeExpectancy.eps
+
+Figure 8:   Subdirectory: Mortality/
+   Files:   Cancer.m         Cancer_Output.eps         Cancer_Publications	
+            BreastCancer.m   BreastCancer_Output.eps   BreastCancer_Publications
+	    HeartDisease.m   HeartDisease_Output.eps   HeartDisease_Publications
+	    
+Figure 9:   Subdirectory: 
+   Files:   Cancer.m         Cancer_TFP	
+	    BreastCancer.m   BreastCancer_TFP
+	    HeartDisease.m   HeartDisease_TFP
+
+Figure 10:  Subdirectory: Compustat/
+   Files:   MasterCompustat.m   CompustatHist2_Sales.eps
+
+
+
+Appendix Figure 1:   Subdirectory: Aggregate/
+   Files:   AggregateBLS_SciEng.m   AggregateBLS_SciEng.eps
+
+Appendix Figure 2:   Subdirectory: Seeds/
+   Files:   SeedYields.m
+            Yields_Corn.eps, Yields_Soybeans.eps, Yields_Cotton.eps, Yields_Wheat.eps
+
+Appendix Figure 3:   Subdirectory: Pharma/
+   Files:   NMEGraph.m   NMEGraph_Output.eps   
+
+Appendix Figure 4:   Subdirectory: Pharma/
+   Files:   NMEGraph.m   NMEGraph_TFP.eps
+
+Appendix Figure 5:  Subdirectory: Compustat/
+   Files:   MasterCompustat.m   CompustatHist3_Sales.eps
+
+Appendix Figure 6:  Subdirectory: Compustat/
+   Files:   MasterCompustat.m   CompustatHist4_Sales.eps
+
+
+
+Table 1:    Subdirectory: MooresLaw/
+   Files:   IntelGraph.m          SemiconductorTFP.m
+            IntelGraph_Main.log   SemiconductorTFP_Main.log
+	    
+Table 2:    Subdirectory: Seeds/
+   Files:  SeedYields.m   SeedYields_Main.log
+
+Table 3:    Subdirectory: Mortality/
+   Files:   Cancer.m         Cancer_Main.log         
+	    BreastCancer.m   BreastCancer_Main.log           
+	    HeartDisease.m   HeartDisease_Main.log            
+
+
+Table 4:    Subdirectory: Compustat/
+   Files:   MasterCompustat.m 
+            CompustatIdeaPF_Sales_Main.log
+            CompustatIdeaPF_MktCap_Main.log
+            CompustatIdeaPF_Employment_Main.log
+            CompustatIdeaPF_RLP_Main.log
+
+Table 5:    Subdirectory: Compustat/
+   Files:   MasterCompustat.m 
+            CompustatIdeaPF_Sales_Main.log
+            CompustatIdeaPF_RLPMinGrowth1_Main.log
+            CompustatIdeaPF_Windsor1_Main.log
+            CompustatIdeaPF_Robust1_Main.log
+            CompustatIdeaPF_Robust2_Main.log
+            CompustatIdeaPF_MedianIdeaGrowth_Main.log
+            CompustatIdeaPF_UnWeighted_Main.log
+            CompustatIdeaPF_DHSGrowth_Main.log
+
+
+Table 6:    Files: itfp.do (Stata program run at Census Research Data Center)
+
+Table 7:    Summary of results from earlier tables/files
+
+Table A1:   Same programs as earlier, but with "_Lambda" instead of
+            "_Main" for the *.log result files.
+
+Appendix Table 1: Same programs as earlier, but with "_WagePlus1" instead of
+            "_Main" for the *.log result files.
+
+Appendix Table 2: Same programs as earlier, but with "_WageGDP" instead of
+            "_Main" for the *.log result files.

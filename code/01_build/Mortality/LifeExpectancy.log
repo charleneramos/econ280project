@@ -1,0 +1,19 @@
+LifeExpectancy                 14-Nov-2024 
+ 
+  LifeExpectancy   2/28/15
+ 
+   Life expectancy, at birth and at age 65
+   See Life-ExpectancyAggregateData.xls
+    -- Data from <a href="matlab:web https://www.clio-infra.eu/datasets/transfer/zip3969638">https://www.clio-infra.eu/datasets/transfer/zip3969638</a>
+       and Health, United States 2013, vol 63 no 3. Hyattsville, MD: NCHS; 2014. Available from: <a href="matlab:web http://www.cdc.gov/nchs/data/nvsr/nvsr63/nvsr63_03.pdf">http://www.cdc.gov/nchs/data/nvsr/nvsr63/nvsr63_03.pdf</a>.
+
+ 
+Average change in Life Expectancy at birth  pre- 1950 = 3.774 years per decade
+Average change in Life Expectancy at birth since 1950 = 1.755 years per decade
+Average change in Life Expectancy at 65    since 1950 = 0.869 years per decade
+ 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('LifeExpectancy', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/LifeExpectancy.m', 184)" style="font-weight:bold">LifeExpectancy</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/LifeExpectancy.m',184,0)">line 184</a>)] 

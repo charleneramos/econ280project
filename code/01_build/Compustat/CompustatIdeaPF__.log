@@ -1,0 +1,27 @@
+CompustatIdeaPF__                 23-Oct-2024 
+ 
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = 
+   
+             Lambda =        
+=============================================================
+ 
+ 
+ 
+=============================================================
+ 
+KEY PARAMETER VALUES:    CaseName = 
+{Unrecognized function or variable 'OutputMeasure'.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('ShowParameters', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/ShowParameters.m', 9)" style="font-weight:bold">ShowParameters</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/ShowParameters.m',9,0)">line 9</a>)
+disp([  '         Idea Output Measure = ' OutputMeasure]);
+                                          ^^^^^^^^^^^^^
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 14)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',14,0)">line 14</a>)
+ShowParameters
+^^^^^^^^^^^^^^
+} 
+
+global CaseName MasterCase Lambda StopForFigLabels;
+diarychad(['CompustatIdeaPF_' CaseName],MasterCase);

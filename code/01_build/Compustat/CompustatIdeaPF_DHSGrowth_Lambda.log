@@ -1,0 +1,955 @@
+CompustatIdeaPF_DHSGrowth_Lambda                 23-Oct-2024 
+ 
+run ../ShowMasterParameters
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = Lambda
+   Robustness check -- diminishing returns to R&D: reports S^Lambda everywhere
+             Lambda =  0.7500
+=============================================================
+ 
+ 
+figname=['Compustat_' CaseName];
+if strcmp(MasterCase,'Main')~=1; figname=[figname '_' MasterCase]; end;
+
+load(['CompustatData_' MasterCase]);
+ShowParameters
+ 
+=============================================================
+ 
+KEY PARAMETER VALUES:    CaseName = DHSGrowth
+         Idea Output Measure = Sales
+            DotComCorrection =     0
+       WeightingByScientists =     1
+  RequireAllDecadesPosGrowth =     0
+ RequireIncreasingScientists =     0
+           MinimumGrowthRate =     NaN
+               WindsorizeTop =     0
+              DHSGrowthRates =     1
+          IdeaGrowthApproach = Mean
+ 
+         This is the baseline sampling frame:
+          - 2 consecutive decades of postive MktCap/Sales/EmpGrowth
+          - But no requirement that effective scientists increase between the two
+ 
+=============================================================
+ 
+definecolors;
+
+fnamegraphs=[figname '.ps'];
+if exist(fnamegraphs); delete(fnamegraphs); end;
+
+
+[T,NN]=size(EffectiveScientists);
+fprintf('The starting number of firms (some RND after 1980) is %8.0f\n',NN);
+The starting number of firms (some RND after 1980) is    15128
+
+
+% -----------------------------------------------------------------
+% Assign "idea output" measure based on the OutputMeasure string
+% -----------------------------------------------------------------
+if strcmp(OutputMeasure,'MktCap');
+    IdeaOutput=MarketCapReal;
+    IdeaOutputString='Market Cap (millions)';
+    IdeaGrowthString='Market Cap Growth (percent)';
+elseif strcmp(OutputMeasure,'Sales');
+    IdeaOutput=SalesReal;
+    IdeaOutputString='Sales (billions)';
+    IdeaGrowthString='Sales Growth (percent)';
+elseif strcmp(OutputMeasure,'Emp');
+    IdeaOutput=Emp*1000;
+    IdeaOutputString='Employment (thousands)';
+    IdeaGrowthString='Employment Growth (percent)';
+elseif strcmp(OutputMeasure,'RLP');
+    IdeaOutput=SalesReal./Emp*10^3;
+    IdeaOutputString='Revenue Labor Productivity (thousands of dollars)';
+    IdeaGrowthString='Revenue Labor Productivity Growth (percent)';
+end;
+
+% Replace any zero or negative values of IdeaOutput with NaNs
+% to avoid imaginary growth rates, etc.
+IdeaOutput(IdeaOutput<=0)=NaN;
+IdeaGrowth=diff(log(IdeaOutput));
+if DHSGrowthRates; % (yt-yt-1)/(0.5*yt +0.5*yt-1)
+    yt=trimr(IdeaOutput,1,0);
+    ylag=trimr(IdeaOutput,0,1);
+    IdeaGrowth=(yt-ylag)./(.5*yt+.5*ylag);
+end;
+
+% -----------------------------------------------------------------
+% Key company codes of interest
+% -----------------------------------------------------------------
+
+companystring=strmat('INTC GOOGL AAPL MSFT PHG1 GENZ MRK NVS BAYRY JNJ PFE HON CSCO SIEGY GE HMC F BA LMT DD DOW AMSWA MTRN');
+companycodes=cellstr(companystring);
+SelectCompanies=[];
+for i=1:length(companycodes);
+    eval([companycodes{i} '=find(strcmp(TIC,''' companycodes{i} '''));']);
+    SelectCompanies=[SelectCompanies; eval(companystring(i,:))];
+end;
+
+% -----------------------------------------------------------------
+% Dot-com correction for Market Cap (or other output measure)
+% -----------------------------------------------------------------
+% For years between 1996 and 2001, if we observe market cap
+% in 1995 and 2002: replace with exp(log(market_value_1995)
+%  + (year-1995)/7 * (log(market_value_2002)-log(market_value_1995)))
+if DotComCorrection;
+    yr0=1979;
+    dotcomyrs=(1995:2002)';
+    growthIdeaOutput1995to2002=log(IdeaOutput(2002-yr0,:)./IdeaOutput(1995-yr0,:));
+    dotcomobs=~isnan(growthIdeaOutput1995to2002);
+    IdeaOutputDotC=IdeaOutput;
+    for i=1:NN;
+        if dotcomobs(i);
+            IdeaOutputDotC(dotcomyrs-yr0,i)=exp(log(IdeaOutput(1995-yr0,i))+(dotcomyrs-1995)/7*growthIdeaOutput1995to2002(i));
+        end;
+    end;
+    IdeaGrowth=diff(log(IdeaOutputDotC));  % 1981-2015
+    if DHSGrowthRates; % (yt-yt-1)/(0.5*yt +0.5*yt-1)
+        yt=trimr(IdeaOutputDotC,1,0);
+        ylag=trimr(IdeaOutputDotC,0,1);
+        IdeaGrowth=(yt-ylag)./(.5*yt+.5*ylag);
+    end;
+end;
+
+% ---------------------------------------------------
+% Basic graphs of Idea Output and Effective Scientists
+% ---------------------------------------------------
+
+for i=1:length(SelectCompanies);
+    sfigure(1); figsetup; hold on;
+    [ax,h1,h2]=plotyy(years,IdeaOutput(:,SelectCompanies(i))/1000,years,EffectiveScientists(:,SelectCompanies(i))/1000);
+    darkfactor=.8;
+    set(h1,'LineWidth',LW,'Color',myblue);
+    set(h2,'LineWidth',LW,'Color',mygreen);
+    set(ax(1),'ycolor',myblue*darkfactor);
+    set(ax(2),'ycolor',mygreen*darkfactor);
+    chadfig2(' ',IdeaOutputString,1,0);
+    chadfigyy(ax(2),'Scientists (thousands)');
+    if DotComCorrection;
+        plot(ax(1),dotcomyrs,IdeaOutputDotC(dotcomyrs-yr0,SelectCompanies(i))/1000,'--','Color',mypurp); 
+    end;
+    title(Name(SelectCompanies(i)),'FontName','Helvetica','FontSize',11);
+    print('-dpsc','-append',fnamegraphs);
+end;
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)] 
+[Warning: The figure is too large for the page and will be cut off. Resize the figure, adjust
+the output size by setting the figure's PaperPosition property, use the 'print' command with
+either the  '-bestfit' or '-fillpage' options, or use the 'Best fit' or 'Fill page' options on
+the 'Print Preview' window.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('validate', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m', 167)" style="font-weight:bold">validate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/private/validate.m',167,0)">line 167</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 67)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',67,0)">line 67</a>)] 
+
+
+
+% -----------------------------------------------------------
+% SAMPLE SELECTION:
+% Idea / Market cap growth -- require 3 observations per decade at least
+%   and at least 2 consecutive decades
+% -----------------------------------------------------------
+
+
+% 1980s 1990s 2000s 2010s = 4 decades
+NumDecades=4;
+KeepingObs=zeros(NN,NumDecades)*NaN;         % NumFirms x 4 Decades
+NumIdeaGrowth=zeros(NN,NumDecades)*NaN;    % NumFirms x 4 Decades
+MedianScientists=zeros(NN,NumDecades)*NaN;   % NumFirms x 4 Decades
+MeanIdeaGrowth=zeros(NN,NumDecades)*NaN; % NumFirms x 4 Decades
+
+DecadeYears=[yr1980s yr1990s yr2000s yr2010s];
+DecadeG    =[yr1980g yr1990g yr2000g yr2010g];
+for t=1:NumDecades;
+    NumIdeaGrowth(:,t)=sum(~isnan(IdeaGrowth(DecadeG(:,t),:)))';
+    MedianScientists(:,t)=median(EffectiveScientists(DecadeYears(:,t),:),"omitmissing")';
+    if strcmp(IdeaGrowthApproach,'Median');
+        MeanIdeaGrowth(:,t)=median(IdeaGrowth(DecadeG(:,t),:), "omitmissing")';
+    else; % Default is to use the mean (since ideas get capitalized all at once)
+        MeanIdeaGrowth(:,t)=mean(IdeaGrowth(DecadeG(:,t),:), "omitmissing")';
+    end;
+end;
+
+% If MedianScientists<=0, replace with NaN
+indx=find(MedianScientists<0);
+fprintf('Replacing %4.0f decade observations with zero/negative MedianScientists with NaN\n',sum(indx));
+Replacing 26853 decade observations with zero/negative MedianScientists with NaN
+disp '(Recall our earlier condition was just that SOME YEAR had positive RND)';
+(Recall our earlier condition was just that SOME YEAR had positive RND)
+MedianScientists(MedianScientists<=0)=NaN;
+
+% Adjusting for Lambda
+MedianScientists=MedianScientists.^Lambda;
+
+
+disp ' ';
+ 
+disp 'Median Effective Scientists, by decade (after lambda adjustment)';
+Median Effective Scientists, by decade (after lambda adjustment)
+DecadeNames='1980s 1990s 2000s 2010s';
+Decades=[1980 1990 2000 2010];
+cshow(Name(SelectCompanies),MedianScientists(SelectCompanies,:),'%12.0f',DecadeNames)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                          612        1759        3885        6439
+Alphabet Inc                        NaN         NaN         709        4979
+Apple Inc                           298        1041         717        3103
+Microsoft Corp                      169        1215        4322        6313
+North American Philips Corp         374         531         NaN         NaN
+Genzyme Corp                        NaN         223         739        1028
+Merck & Co                         1098        1867        3162        5218
+Novartis Ag                         NaN        2875        3502        6042
+Bayer Ag                            NaN        2610        2637        3281
+Johnson & Johnson                  1183        2036        4415        5483
+Pfizer Inc                          802        1854        5677        5302
+Honeywell International Inc         890         691        1119        1730
+Cisco Systems Inc                    17         413        3298        4177
+Siemens Ag                          NaN        4863        4669        3986
+General Electric Co                2186        1912        2343        3370
+Honda Motor Co Ltd                 1411        2544        3613        4298
+Ford Motor Co                      3753        5387        5554        4219
+Boeing Co                          1572        2248        2091        2678
+Lockheed Martin Corp               1062        1290        1179         836
+Du Pont (e I) De Nemours           2260        2089        1512        1872
+Dow Chemical                       1354        1684        1268        1666
+American Software  -cl A             30          51          28          32
+Materion Corp                        42          41          21          41
+
+
+% IncreasingScientists: Do we require EffectiveScientists to increase between decades?
+disp ' ';
+ 
+if RequireIncreasingScientists;
+    IncreasingScientists=(diff(MedianScientists')>0)';
+    IncreasingScientists=[ones(NN,1)*NaN IncreasingScientists];
+    disp 'Requiring Increasing Median Effective Scientists, by decade';
+else;
+    IncreasingScientists=ones(size(MedianScientists));
+    disp 'Ignoring IncreasingScientists by setting equal to 1 always';
+end;
+Ignoring IncreasingScientists by setting equal to 1 always
+cshow(Name(SelectCompanies),IncreasingScientists(SelectCompanies,:),'%12.0f',DecadeNames)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                            1           1           1           1
+Alphabet Inc                          1           1           1           1
+Apple Inc                             1           1           1           1
+Microsoft Corp                        1           1           1           1
+North American Philips Corp           1           1           1           1
+Genzyme Corp                          1           1           1           1
+Merck & Co                            1           1           1           1
+Novartis Ag                           1           1           1           1
+Bayer Ag                              1           1           1           1
+Johnson & Johnson                     1           1           1           1
+Pfizer Inc                            1           1           1           1
+Honeywell International Inc           1           1           1           1
+Cisco Systems Inc                     1           1           1           1
+Siemens Ag                            1           1           1           1
+General Electric Co                   1           1           1           1
+Honda Motor Co Ltd                    1           1           1           1
+Ford Motor Co                         1           1           1           1
+Boeing Co                             1           1           1           1
+Lockheed Martin Corp                  1           1           1           1
+Du Pont (e I) De Nemours              1           1           1           1
+Dow Chemical                          1           1           1           1
+American Software  -cl A              1           1           1           1
+Materion Corp                         1           1           1           1
+
+
+disp ' ';
+ 
+disp 'Number of Idea Growth observations, by decade';
+Number of Idea Growth observations, by decade
+cshow(Name(SelectCompanies),NumIdeaGrowth(SelectCompanies,:),'%12.0f',DecadeNames)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                            9          10           8           6
+Alphabet Inc                          0           0           5           6
+Apple Inc                             9          10           8           6
+Microsoft Corp                        4          10           8           6
+North American Philips Corp           9           2           0           0
+Genzyme Corp                          0           3           8           1
+Merck & Co                            9          10           8           6
+Novartis Ag                           0           3           8           6
+Bayer Ag                              0           6           8           6
+Johnson & Johnson                     9          10           8           6
+Pfizer Inc                            9          10           8           6
+Honeywell International Inc           9          10           8           6
+Cisco Systems Inc                     0          10           8           6
+Siemens Ag                            0           5           8           6
+General Electric Co                   9          10           8           6
+Honda Motor Co Ltd                    9          10           8           6
+Ford Motor Co                         9          10           8           6
+Boeing Co                             9          10           8           6
+Lockheed Martin Corp                  9          10           8           6
+Du Pont (e I) De Nemours              9          10           8           6
+Dow Chemical                          9          10           8           6
+American Software  -cl A              7          10           8           5
+Materion Corp                         9          10           8           6
+cshow(Name(500:600),NumIdeaGrowth(500:600,:),'%12.0f',DecadeNames)
+ 
+                                   1980s       1990s       2000s       2010s
+----------------------------------------------------------------------------
+Block Drug  -cl A                      9          10           0           0
+Blount Intl Inc                        9          10           8           6
+Mentor Group Intl Cp                   5           0           0           0
+Bluefield Supply Co                    5           0           0           0
+Bluewater Oil & Gas Ltd                3           0           0           0
+Bobbie Brooks Inc                      7           6           0           0
+Boeing Co                              9          10           8           6
+Bogue Electric Mfg Co                  6           6           0           0
+Officemax Inc                          9          10           8           3
+Circa Pharmaceuticals Inc              9           3           0           0
+Bbn Corp                               9           7           0           0
+Bolt Technology Corp                   8          10           8           5
+Cardiodynamics Intl Corp               7          10           8           0
+Camelot Corp                           9           8           0           0
+Bomarko Inc                            7           0           0           0
+Books Mobile Inc                       6           0           0           0
+Boole & Babbage Inc                    6           9           0           0
+Boonton Electronics Corp               9          10           0           0
+Booth Inc                              6           0           0           0
+Bordeaux Petroleum Co                  2           0           0           0
+Hexion Inc                             9          10           8           6
+Burns Intl Services Corp               9          10           0           0
+Boro Recycling Inc                     1           0           0           0
+Boston Digital Corp                    9           2           0           0
+Rexam Plc                              9          10           8           6
+Entrprize Corp                         9           8           8           1
+Bowl America Inc  -cl A                9          10           8           6
+Bowles Fluidics Corp                   9           9           0           0
+Bowline Corp                           9           6           0           0
+White Electronic Designs Cp            9          10           8           0
+Bowne & Co Inc                         9          10           8           0
+Bradley Real Estate Inc                9          10           0           0
+Brady Corp                             6          10           8           6
+Brae Corp                              8           0           0           0
+Richey Electrs Inc                     9           8           0           0
+Braun Engineering                      4           0           0           0
+Bravo Knits Inc                        0           0           0           0
+Brentwood Instruments Inc              4           0           0           0
+Bridge Communications Inc              2           0           0           0
+Brigadier Industries Corp-sc           0           0           0           0
+Briggs & Stratton                      9          10           8           6
+Msgi Security Solutions Inc            4           8           6           0
+Bristol-myers Squibb Co                9          10           8           6
+Catalyst Paper Corp                    9          10           8           6
+Telus Corp                             9          10           8           6
+British Land Of America                7           0           0           0
+Bp Plc                                 9          10           8           6
+Bt Group Plc                           6          10           8           6
+Britt Technology Corp                  7           0           0           0
+Sharebase Corp                         6           0           0           0
+Integra A Hotel & Rest                 9           2           0           0
+Brooks Fashion Stores                  3           0           0           0
+Bross Utilities Service Corp           1           0           0           0
+Bns Holding Co                         9          10           5           0
+Brown (tom) Inc                        9          10           4           0
+Brunos Inc                             9           9           0           0
+Brunswick Corp                         9          10           8           6
+Brunton Co                             2           0           0           0
+Materion Corp                          9          10           8           6
+Bryan Steam Corp                       9           9           0           0
+Buck Engineering Co Inc                9           0           0           0
+Buell Industries Inc                   9           0           0           0
+Bueno Coeur D Alene Inc                2           0           0           0
+Builders Investment Group              2           0           0           0
+Building & Land Technology             4           0           0           0
+Bulova Corp                            9          10           4           0
+Bun & Burger Intl Inc                  2           0           0           0
+Bundy Corp                             7           0           0           0
+Buning International Inc               9           2           0           0
+Bunker Ramo Corp                       0           0           0           0
+Bunting Inc                            9           0           0           0
+Burgess Inds                           1           0           0           0
+Burlington Coat Factory Invs           6           9           8           4
+Burlington Industries Inc              9          10           3           0
+Burndy Corp                            7           0           0           0
+Burnley Corp                           9           0           0           0
+Burr-brown Corp                        7          10           0           0
+Burrillville Racing Assn               4           0           0           0
+Burris Chemical Inc                    6           0           0           0
+Unisys Corp                            9          10           8           6
+Burst Agritech Inc                     9           2           0           0
+Burton Energy & Solar Tech             4           0           0           0
+Emex Corp                              9          10           2           0
+Bush Industries  -cl A                 5          10           3           0
+Business Computer Network              1           0           0           0
+Business Computing Intl Inc            1           0           0           0
+Butler Mfg Co                          9          10           4           0
+Butler National Corp                   9          10           8           5
+Bynamics Inc                           3           0           0           0
+C & R Clothiers Inc                    9           2           0           0
+Cae Inc                                9          10           8           6
+Cbi Industries Inc                     9           5           0           0
+Cci Corp  -old                         1           0           0           0
+Ccx Inc                                9           4           0           0
+Acxiom Corp                            5          10           8           6
+C-cor Inc                              8          10           8           0
+Airguide Inc                           8           5           0           0
+Cf & I Steel Corp                      9           2           0           0
+Cfs Continental Inc                    4           0           0           0
+Cga Computers Inc                      3           0           0           0
+C G S Scientific Corp                  9           4           0           0
+
+disp ' ';
+ 
+disp 'Mean (or median) Idea Growth (all observations), by decade';
+Mean (or median) Idea Growth (all observations), by decade
+cshow(Name(SelectCompanies),MeanIdeaGrowth(SelectCompanies,:),'%12.3f',DecadeNames)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                        0.101       0.201       0.009       0.060
+Alphabet Inc                        NaN         NaN       0.661       0.176
+Apple Inc                         0.371      -0.007       0.145       0.264
+Microsoft Corp                    0.400       0.296       0.094       0.063
+North American Philips Corp       0.053      -0.046         NaN         NaN
+Genzyme Corp                        NaN       0.058       0.198      -0.121
+Merck & Co                        0.056       0.139      -0.056       0.044
+Novartis Ag                         NaN      -0.088       0.046       0.003
+Bayer Ag                            NaN      -0.005       0.053       0.004
+Johnson & Johnson                 0.037       0.082       0.075       0.005
+Pfizer Inc                        0.028       0.083       0.110      -0.019
+Honeywell International Inc       0.044       0.046       0.023       0.021
+Cisco Systems Inc                   NaN       0.565       0.107       0.036
+Siemens Ag                          NaN       0.042       0.019      -0.063
+General Electric Co               0.044       0.050       0.029      -0.066
+Honda Motor Co Ltd                0.082       0.064       0.067       0.042
+Ford Motor Co                     0.064       0.031      -0.017       0.024
+Boeing Co                         0.044       0.081      -0.007       0.041
+Lockheed Martin Corp              0.026       0.072       0.037      -0.012
+Du Pont (e I) De Nemours          0.063      -0.047      -0.010      -0.028
+Dow Chemical                      0.015      -0.014       0.105      -0.002
+American Software  -cl A          0.215      -0.007      -0.045       0.046
+Materion Corp                     0.017       0.014       0.068       0.042
+
+% Require at least 3 observations per decade
+DropIdeaGrowth=(NumIdeaGrowth<3);
+MeanIdeaGrowth(DropIdeaGrowth)=NaN;
+
+disp ' ';
+ 
+disp 'Mean (or median) Idea Growth (at least 3 observations), by decade';
+Mean (or median) Idea Growth (at least 3 observations), by decade
+numremaining=sum(any(~isnan(MeanIdeaGrowth')));
+fprintf('  The number of firms remaining now is %8.0f\n',numremaining);
+  The number of firms remaining now is    11512
+cshow(Name(SelectCompanies),MeanIdeaGrowth(SelectCompanies,:),'%12.3f',DecadeNames)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                        0.101       0.201       0.009       0.060
+Alphabet Inc                        NaN         NaN       0.661       0.176
+Apple Inc                         0.371      -0.007       0.145       0.264
+Microsoft Corp                    0.400       0.296       0.094       0.063
+North American Philips Corp       0.053         NaN         NaN         NaN
+Genzyme Corp                        NaN       0.058       0.198         NaN
+Merck & Co                        0.056       0.139      -0.056       0.044
+Novartis Ag                         NaN      -0.088       0.046       0.003
+Bayer Ag                            NaN      -0.005       0.053       0.004
+Johnson & Johnson                 0.037       0.082       0.075       0.005
+Pfizer Inc                        0.028       0.083       0.110      -0.019
+Honeywell International Inc       0.044       0.046       0.023       0.021
+Cisco Systems Inc                   NaN       0.565       0.107       0.036
+Siemens Ag                          NaN       0.042       0.019      -0.063
+General Electric Co               0.044       0.050       0.029      -0.066
+Honda Motor Co Ltd                0.082       0.064       0.067       0.042
+Ford Motor Co                     0.064       0.031      -0.017       0.024
+Boeing Co                         0.044       0.081      -0.007       0.041
+Lockheed Martin Corp              0.026       0.072       0.037      -0.012
+Du Pont (e I) De Nemours          0.063      -0.047      -0.010      -0.028
+Dow Chemical                      0.015      -0.014       0.105      -0.002
+American Software  -cl A          0.215      -0.007      -0.045       0.046
+Materion Corp                     0.017       0.014       0.068       0.042
+cshow(Name(500:550),MeanIdeaGrowth(500:550,:),'%12.3f',DecadeNames)
+ 
+                                   1980s       1990s       2000s       2010s
+----------------------------------------------------------------------------
+Block Drug  -cl A                  0.054       0.047         NaN         NaN
+Blount Intl Inc                   -0.035      -0.005      -0.079       0.067
+Mentor Group Intl Cp               0.472         NaN         NaN         NaN
+Bluefield Supply Co               -0.164         NaN         NaN         NaN
+Bluewater Oil & Gas Ltd           -0.178         NaN         NaN         NaN
+Bobbie Brooks Inc                 -0.035      -0.187         NaN         NaN
+Boeing Co                          0.044       0.081      -0.007       0.041
+Bogue Electric Mfg Co             -0.053      -0.299         NaN         NaN
+Officemax Inc                     -0.001       0.025       0.009      -0.031
+Circa Pharmaceuticals Inc          0.207       0.172         NaN         NaN
+Bbn Corp                           0.161      -0.056         NaN         NaN
+Bolt Technology Corp              -0.085       0.064       0.093       0.049
+Cardiodynamics Intl Corp           0.268       0.036       0.111         NaN
+Camelot Corp                      -0.073       0.005         NaN         NaN
+Bomarko Inc                       -0.003         NaN         NaN         NaN
+Books Mobile Inc                  -0.034         NaN         NaN         NaN
+Boole & Babbage Inc                0.174       0.096         NaN         NaN
+Boonton Electronics Corp           0.000      -0.071         NaN         NaN
+Booth Inc                          0.136         NaN         NaN         NaN
+Bordeaux Petroleum Co                NaN         NaN         NaN         NaN
+Hexion Inc                         0.014      -0.187       0.149      -0.011
+Burns Intl Services Corp          -0.062      -0.069         NaN         NaN
+Boro Recycling Inc                   NaN         NaN         NaN         NaN
+Boston Digital Corp               -0.046         NaN         NaN         NaN
+Rexam Plc                         -0.118       0.039       0.054      -0.067
+Entrprize Corp                     0.271      -0.097       0.039         NaN
+Bowl America Inc  -cl A            0.019      -0.012      -0.006      -0.057
+Bowles Fluidics Corp               0.089       0.082         NaN         NaN
+Bowline Corp                      -0.393      -0.180         NaN         NaN
+White Electronic Designs Cp       -0.032       0.009       0.048         NaN
+Bowne & Co Inc                     0.025       0.145      -0.046         NaN
+Bradley Real Estate Inc            0.029       0.260         NaN         NaN
+Brady Corp                         0.128       0.078       0.108      -0.021
+Brae Corp                         -0.066         NaN         NaN         NaN
+Richey Electrs Inc                 0.171       0.154         NaN         NaN
+Braun Engineering                  0.084         NaN         NaN         NaN
+Bravo Knits Inc                      NaN         NaN         NaN         NaN
+Brentwood Instruments Inc          0.167         NaN         NaN         NaN
+Bridge Communications Inc            NaN         NaN         NaN         NaN
+Brigadier Industries Corp-sc         NaN         NaN         NaN         NaN
+Briggs & Stratton                 -0.017       0.032       0.021      -0.032
+Msgi Security Solutions Inc        0.178       0.259      -0.452         NaN
+Bristol-myers Squibb Co            0.077       0.057      -0.030      -0.037
+Catalyst Paper Corp                0.014      -0.039       0.037       0.066
+Telus Corp                         0.023       0.101       0.030       0.027
+British Land Of America           -0.016         NaN         NaN         NaN
+Bp Plc                            -0.043       0.032       0.127      -0.026
+Bt Group Plc                       0.142       0.004       0.016      -0.044
+Britt Technology Corp             -0.205         NaN         NaN         NaN
+Sharebase Corp                     0.148         NaN         NaN         NaN
+Integra A Hotel & Rest            -0.052         NaN         NaN         NaN
+MeanIdeaGrowthRaw=MeanIdeaGrowth; % Save this version before dropping negatives
+
+% -----------------------------------------------------------
+% BENCHMARK Case: 
+%       This is the baseline sampling frame:
+%        - 2 consecutive decades of postive MeanIdeaGrowth
+% -----------------------------------------------------------
+
+disp ' '; disp ' ';
+ 
+ 
+disp '-----------------------';
+-----------------------
+disp ' Idea TFP Calculations';
+ Idea TFP Calculations
+disp '-----------------------';
+-----------------------
+
+if ~isnan(MinimumGrowthRate); % Replace growth rates below this value (e.g. 0.01) with this value
+    disp ' ';
+    TotObs=sum(~isnan(vector(MeanIdeaGrowth)));
+    LessThanMin=sum(vector(MeanIdeaGrowthRaw)<MinimumGrowthRate);    
+    PercentWindsorized=LessThanMin/TotObs*100;
+    fprintf('  >>>> Updating growth rates so lowest value is %8.4f\n',MinimumGrowthRate);
+    fprintf('  >>>> This affects %6.2f percent of the observations.\n',PercentWindsorized);
+    MeanIdeaGrowth(MeanIdeaGrowth<MinimumGrowthRate)=MinimumGrowthRate;    
+    if WindsorizeTop;
+        TopGrowthCutoff=prctile(vector(MeanIdeaGrowth),100-PercentWindsorized);
+        fprintf('  >>>> Windsorizing: Updating growth rates so HIGHEST value is %8.4f\n',TopGrowthCutoff);
+        MeanIdeaGrowth(MeanIdeaGrowth>TopGrowthCutoff)=TopGrowthCutoff;
+    end;
+    disp '       MeanIdeaGrowth BEFORE       MeanIdeaGrowth AFTER';
+    cshow(' ',[MeanIdeaGrowthRaw(1:50,:) MeanIdeaGrowth(1:50,:)],'%8.3f','d1 d2 d3 d4 d1 d2 d3 d4');
+end;
+
+if RequireAllDecadesPosGrowth==0; % Benchmark case: only keep decades with positive growth
+    % Drop specific decades with negative MeanIdeaGrowth (always)
+    MeanIdeaGrowth(MeanIdeaGrowth<=0)=NaN;    
+elseif RequireAllDecadesPosGrowth==-1; % Robust 3: Consider *all* decades, even if negative growth
+    disp 'Robust3: Keeping all decades, even if negative growth';
+elseif RequireAllDecadesPosGrowth==1; % Robust2: Drop if *any* decade has negative MeanIdeaGrowth
+    FirmHasDecadeNegativeIdeaGrowth=any(MeanIdeaGrowth'<0);
+    MeanIdeaGrowth(FirmHasDecadeNegativeIdeaGrowth,:)=NaN;
+    disp ' ';
+    disp 'Robust2: Dropping if *any* decade has negative MeanIdeaGrowth';
+    disp '       MeanIdeaGrowth BEFORE       MeanIdeaGrowth AFTER';
+    cshow(' ',[MeanIdeaGrowthRaw(1:50,:) MeanIdeaGrowth(1:50,:)],'%8.3f','d1 d2 d3 d4 d1 d2 d3 d4');
+end;
+
+
+% Now loop through companies to construct IdeaTFP 2/3/4 decades
+KeepDecade=~isnan(MeanIdeaGrowth);
+KeepIdeaTFP=zeros(NN,1);
+IdeaTFP=zeros(NN,NumDecades)*NaN;
+RandShow=rand(NN,1); % Show values for 1 percent sample as well.
+PercentSample=.004;
+for i=1:NN;
+%for i=1:3000;
+    % Reduce to these six cases and search for 1st 1:
+    % 1100, 0110, 0011, 1110, 0111, 1111
+    % Recode 1011, 1101 ==> 0011 and 1100
+    if KeepDecade(i,:)==[1 0 1 1]; KeepDecade(i,:)=[0 0 1 1]; MeanIdeaGrowth(i,1)=NaN; end;
+    if KeepDecade(i,:)==[1 1 0 1]; KeepDecade(i,:)=[1 1 0 0]; MeanIdeaGrowth(i,4)=NaN;end;
+    if sum(KeepDecade(i,:)')>1; % So we at least have a chance!
+    
+        ideatfp=MeanIdeaGrowth(i,:)./MedianScientists(i,:);
+        if any(find(SelectCompanies==i)) | RandShow(i)<PercentSample;
+            disp ' ';
+            disp(Name{i});
+            cshow('EffSci:',MedianScientists(i,:),'%8.0f',[],[],1);
+            cshow('MCGrow:',MeanIdeaGrowth(i,:),'%8.3f',[],[],1);
+            cshow('IncSci:',IncreasingScientists(i,:),'%8.0f',[],[],1);
+            cshow('Before:',ideatfp*100,'%8.3f',[],[],1);
+        end;
+        
+        % Now step through and find the first one with increasing scientists
+        foundfirst=0;
+        for t=1:(NumDecades-1);
+            if ~isnan(ideatfp(t)) | foundfirst>0;
+                if IncreasingScientists(i,t+1);
+                    if foundfirst==0;
+                        % Then this is our first!
+                        foundfirst=t;
+                        if DHSGrowthRates; % 
+                            ideatfp=DHSCorrection(ideatfp,t);
+                        else;
+                            ideatfp=ideatfp/ideatfp(t);
+                        end;
+                    else; % Already have found the first one with increasing sci
+                          % Nothing to do...
+                    end;
+                else; % Then IncreasingScientists(i,t+1)==0
+                    if foundfirst==0;
+                        ideatfp(t)=NaN;
+                    else;
+                        ideatfp(t+1)=NaN;
+                    end;
+                end;
+            end;
+        end; % t to find first.
+        if sum(ideatfp', "omitmissing")==1; ideatfp=[NaN NaN NaN NaN]; end; % Only 1 decade
+        ideatfp(isinf(ideatfp))=NaN;
+        keepdecade=~isnan(ideatfp);
+        if keepdecade==[1 0 1 1]; ideatfp(1)=NaN; end;
+        if keepdecade==[1 0 0 1]; ideatfp([1 4])=NaN; end;
+        if keepdecade==[1 1 0 1]; ideatfp(4)=NaN; end;
+        IdeaTFP(i,:)=ideatfp;
+        if any(find(SelectCompanies==i)) | RandShow(i)<PercentSample;
+            cshow('After :',ideatfp,'%8.3f',[],[],1);
+        end;
+
+    end;
+end;
+{Unrecognized function or variable 'DHSCorrection'.
+} 
+
+clear all; global MasterCase MasterNote Lambda StopForFigLabels;
+
+%path('ChadMatlab:',path) % For replication; use 'pathreset.m' to clean path
+% Make sure all relevant files are in path
+curpath=path;
+if isempty(strfind(curpath,'ChadMatlab')); % | isempty(strfind(curpath,'Work/procs'));
+    if exist('ChadMatlab')==7; 
+        curdir=pwd;
+        path([curdir '/ChadMatlab'],path); 
+    end; 
+end;
+
+tic;
+
+% MainResults
+MasterCase='Main';
+MasterNote='Main Benchmark Case';
+Lambda=1;
+StopForFigLabels=0; % Set to 1 to pause so that fig labels can be adjusted when necessary
+cd WageSci; WageEducation; cd .. % The wage series for deflating R&D spending
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cd')" style="font-weight:bold">cd</a>
+Unable to change current folder to '/Users/charleneramos/Documents/Research/Titan/Bloom et al
+2020 - Replication Materials/Compustat/WageSci' (Name is nonexistent or not a folder).
+} 
+MasterIdeaPF

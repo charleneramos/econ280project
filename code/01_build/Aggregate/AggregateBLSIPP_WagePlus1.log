@@ -1,0 +1,341 @@
+AggregateBLSIPP_WagePlus1                 23-Oct-2024 
+ 
+  AggregateBLSIPP.m  6/17/2016
+ 
+    USES Total IPP instead of just R\&D
+ 
+   Basic Idea TFP calculation using BLS's decadal TFP growth numbers
+   and the NIPA IPP numbers
+ 
+   NIPA data on R&D and Intellectual Property Products, via FRED (RND data list)
+
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = WagePlus1
+   Wage deflator plus 1 percent annually for selection
+             Lambda =  1.0000
+=============================================================
+ 
+ 
+Gordon Data
+  1940    1.82
+  1950    3.39
+  1960    1.60
+  1970    1.40
+  1980    0.34
+  1990    0.78
+  2000    0.77
+  2014    0.68
+ 
+BLS Data for adding back RND and IPP
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 358)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',358,0)">line 358</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+    Year[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 358)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',358,0)">line 358</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+     BLS[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 358)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',358,0)">line 358</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+     RND[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 358)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',358,0)">line 358</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+     IPP[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 358)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',358,0)">line 358</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+   Fixed    BLSIndex    TFPIndex
+----------------------------------------------------------------
+    1948  0.0031  0.0000  0.0000  0.0031       44.19       44.19
+    1949  0.0691  0.0000  0.0000  0.0691       44.32       44.32
+    1950  0.0236  0.0000  0.0000  0.0236       47.49       47.49
+    1951  0.0171  0.0000  0.0000  0.0171       48.63       48.63
+    1952  0.0257  0.0000  0.0000  0.0257       49.47       49.47
+    1953 -0.0005  0.0000  0.0000 -0.0005       50.76       50.76
+    1954  0.0417  0.0000  0.0000  0.0417       50.73       50.73
+    1955 -0.0069  0.0000  0.0000 -0.0069       52.89       52.89
+    1956  0.0149  0.0000  0.0000  0.0149       52.52       52.52
+    1957  0.0041  0.0000  0.0000  0.0041       53.31       53.31
+    1958  0.0438  0.0000  0.0000  0.0438       53.53       53.53
+    1959  0.0061  0.0000  0.0000  0.0061       55.92       55.92
+    1960  0.0212  0.0000  0.0000  0.0212       56.27       56.27
+    1961  0.0357  0.0000  0.0000  0.0357       57.47       57.47
+    1962  0.0288  0.0000  0.0000  0.0288       59.56       59.56
+    1963  0.0383  0.0000  0.0000  0.0383       61.30       61.30
+    1964  0.0319  0.0000  0.0000  0.0319       63.70       63.70
+    1965  0.0301  0.0000  0.0000  0.0301       65.76       65.76
+    1966  0.0012  0.0000  0.0000  0.0012       67.77       67.77
+    1967  0.0249  0.0000  0.0000  0.0249       67.85       67.85
+    1968 -0.0039  0.0000  0.0000 -0.0039       69.56       69.56
+    1969 -0.0022  0.0000  0.0000 -0.0022       69.29       69.29
+    1970  0.0309  0.0000  0.0000  0.0309       69.13       69.13
+    1971  0.0281  0.0000  0.0000  0.0281       71.30       71.30
+    1972  0.0272  0.0000  0.0000  0.0272       73.34       73.34
+    1973 -0.0352  0.0000  0.0000 -0.0352       75.36       75.36
+    1974  0.0093  0.0000  0.0000  0.0093       72.75       72.75
+    1975  0.0357  0.0000  0.0000  0.0357       73.43       73.43
+    1976  0.0164  0.0000  0.0000  0.0164       76.10       76.10
+    1977  0.0134  0.0000  0.0000  0.0134       77.36       77.36
+    1978 -0.0039  0.0000  0.0000 -0.0039       78.40       78.40
+    1979 -0.0233  0.0000  0.0000 -0.0233       78.09       78.09
+    1980  0.0021  0.0000  0.0000  0.0021       76.29       76.29
+    1981 -0.0342  0.0000  0.0000 -0.0342       76.45       76.45
+    1982  0.0285  0.0000  0.0000  0.0285       73.89       73.89
+    1983  0.0295  0.0000  0.0000  0.0295       76.03       76.03
+    1984  0.0127  0.0000  0.0000  0.0127       78.31       78.30
+    1985  0.0157  0.0000  0.0000  0.0157       79.31       79.31
+    1986  0.0035  0.0000  0.0000  0.0035       80.56       80.56
+    1987  0.0096  0.0007  0.0012  0.0115       80.84       80.84
+    1988  0.0044  0.0007  0.0018  0.0069       81.62       81.78
+    1989  0.0086  0.0015  0.0041  0.0142       81.98       82.34
+    1990 -0.0046  0.0020  0.0046  0.0020       82.69       83.52
+    1991  0.0327  0.0013  0.0040  0.0380       82.30       83.68
+    1992 -0.0037  0.0003  0.0032 -0.0003       85.04       86.92
+    1993  0.0062 -0.0002  0.0028  0.0088       84.72       86.90
+    1994 -0.0053  0.0002  0.0035 -0.0016       85.25       87.66
+    1995  0.0190  0.0007  0.0045  0.0241       84.80       87.52
+    1996  0.0115  0.0004  0.0048  0.0166       86.42       89.66
+    1997  0.0125  0.0008  0.0048  0.0180       87.42       91.16
+    1998  0.0208  0.0007  0.0033  0.0248       88.52       92.82
+    1999  0.0173  0.0009  0.0020  0.0203       90.38       95.15
+    2000  0.0052  0.0015  0.0015  0.0082       91.96       97.10
+    2001  0.0210  0.0014 -0.0003  0.0221       92.44       97.90
+    2002  0.0235  0.0008 -0.0027  0.0216       94.40      100.09
+    2003  0.0250  0.0002 -0.0038  0.0215       96.64      102.28
+    2004  0.0151  0.0001 -0.0024  0.0128       99.09      104.50
+    2005  0.0032  0.0002 -0.0010  0.0024      100.59      105.85
+    2006  0.0046  0.0008  0.0008  0.0062      100.92      106.10
+    2007 -0.0120  0.0016  0.0041 -0.0063      101.38      106.76
+    2008 -0.0017  0.0032  0.0055  0.0070      100.17      106.09
+    2009  0.0283  0.0009 -0.0005  0.0287      100.00      106.84
+    2010  0.0011  0.0002 -0.0011  0.0002      102.87      109.95
+    2011  0.0059  0.0001 -0.0005  0.0055      102.99      109.98
+    2012  0.0024  0.0004  0.0004  0.0032      103.59      110.58
+    2013  0.0069  0.0002  0.0009  0.0080      103.84      110.93
+    2014  0.0023  0.0000  0.0000  0.0023      104.56      111.82
+ 
+ 
+Average Annual TFP Growth: Private Business Sector (BLS, by ending year)
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 372)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',372,0)">line 372</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+  Year  BLSRaw BLS+RND
+----------------------
+  1960    1.69    1.69
+  1970    2.06    2.06
+  1980    0.99    0.99
+  1990    0.80    0.90
+  2000    1.06    1.51
+  2014    0.92    1.01
+ 
+Merging Gordon data for 1930s and 1940s with BLS data for 1950s and beyond
+Merged data:
+  1940    1.82
+  1950    3.39
+  1960    1.69
+  1970    2.06
+  1980    0.99
+  1990    0.90
+  2000    1.51
+  2014    1.01
+
+WageNotes =
+
+  2×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'WageEducationPlus1: Adds 1% annual wage growth to WageEducation.m'      }
+    {'Currently using Mean Personal Income for Males with 4+ years of college'}
+
+ 
+Underlying annual data
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 416)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',416,0)">line 416</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+    Year[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 416)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',416,0)">line 416</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+        IPP($b)[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 416)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',416,0)">line 416</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+        WageSci  ScientistsIpp[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 416)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',416,0)">line 416</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+       SciBasic
+--------------------------------------------------------------------
+    1929              1           2599         269334         115429
+    1930              1           2289         305841         131075
+    1931              1           1925         311669         155834
+    1932              0           1486         336493         201896
+    1933              0           1434         348617         209170
+    1934              1           1681         356934         178467
+    1935              1           1875         373293         159983
+    1936              1           2150         325524         186014
+    1937              1           2366         338138         169069
+    1938              1           2228         403997         179554
+    1939              1           2390         376493         167330
+    1940              1           2601         346003         192224
+    1941              1           2830         494640         317983
+    1942              2           3080         551992         357172
+    1943              2           3351         596812         417768
+    1944              3           3646         767872         575904
+    1945              3           3968         730891         529266
+    1946              3           4317         741187         509566
+    1947              3           4698         723736         510872
+    1948              4           5112         723813         528188
+    1949              4           5562         665196         485413
+    1950              4           6076         691288         510236
+    1951              4           6636         678085         527399
+    1952              5           7249         744949         593200
+    1953              6           7918         808304         644117
+    1954              7           8649         797821         647507
+    1955              8           9447         836267         666897
+    1956             10          10319         969125         814065
+    1957             12          10917        1053374         879339
+    1958             12          11551        1073524         900375
+    1959             14          12173        1117244         936513
+    1960             15          12828        1161487         989992
+    1961             17          13519        1242671        1028163
+    1962             18          13651        1340565        1128126
+    1963             21          13784        1516257        1276848
+    1964             23          14594        1555467        1322489
+    1965             25          15749        1581091        1320750
+    1966             28          16995        1659316        1365111
+    1967             30          17436        1732021        1428057
+    1968             33          19109        1705987        1392001
+    1969             35          21003        1661636        1342640
+    1970             36          21749        1632228        1301185
+    1971             37          23032        1597788        1263468
+    1972             40          24905        1602081        1256770
+    1973             43          26495        1622923        1275693
+    1974             47          28645        1640762        1270718
+    1975             51          30273        1687960        1288267
+    1976             58          32825        1757781        1313004
+    1977             64          35756        1781537        1328462
+    1978             71          38725        1843767        1381534
+    1979             83          42115        1973172        1446043
+    1980             94          45323        2074022        1540072
+    1981            110          49246        2229604        1622453
+    1982            122          52760        2319924        1686873
+    1983            136          55722        2449653        1765904
+    1984            157          60206        2612684        1850305
+    1985            176          65773        2680441        1902003
+    1986            189          70329        2683093        1876885
+    1987            202          72942        2766589        1922080
+    1988            218          77321        2816838        1916691
+    1989            238          85516        2781946        1823057
+    1990            256          86428        2956201        1899836
+    1991            270          88020        3073157        1931374
+    1992            279          92221        3028604        1864006
+    1993            288         103703        2780045        1658577
+    1994            298         107841        2760543        1622758
+    1995            321         110318        2907957        1699632
+    1996            349         114376        3049600        1746875
+    1997            386         123798        3120414        1712472
+    1998            420         130477        3218965        1704519
+    1999            470         141313        3329486        1678542
+    2000            523         148799        3512800        1717757
+    2001            532         152084        3500050        1730628
+    2002            532         151956        3503644        1748532
+    2003            557         153515        3630923        1808296
+    2004            588         161688        3634160        1801000
+    2005            629         171340        3671062        1827360
+    2006            665         178887        3718549        1870455
+    2007            707         181339        3898219        1985229
+    2008            741         186614        3968610        2038963
+    2009            731         183164        3989316        2046251
+    2010            752         183548        4095377        2136221
+    2011            784         190976        4104175        2115970
+    2012            811         196313        4130655        2106334
+    2013            838         203101        4126018        2106830
+    2014            877         211214        4153135        2105921
+    2015            919         219651        4185739        2132022
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 422)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',422,0)">line 422</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)] 
+ 
+RESULTS
+ 
+        TFPGrowth  Scientists[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 438)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',438,0)">line 438</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)
+] 
+     IdeaTFP
+-----------------------------------------
+1930s        1.82        1.00      100.00
+1940s        3.39        1.80      103.53
+1950s        1.69        2.56       36.46
+1960s        2.06        4.37       25.95
+1970s        0.99        5.02       10.80
+1980s        0.90        7.40        6.73
+1990s        1.51        8.83        9.40
+2000s        1.01       11.13        4.99
+ 
+Mean tfpgrowth =          1.67
+ 
+
+TT =
+
+   72.5000
+
+The implied average growth rate of scientists is     3.32 percent
+The implied average growth rate of idea TFP   is    -4.13 percent
+      Half life of idea TFP =    16.76 years
+      Implied beta =     2.48
+ 
+Idea TFP Factor decline, 1930s - 2000s =   20.040
+Idea TFP Factor decline, 1960s - 2000s =    5.201
+Idea TFP Factor decline, 1980s - 2000s =    1.349
+ 
+Scientists factor increase, 1930s - 2000s =   11.129
+Scientists factor increase, 1960s - 2000s =    2.546
+Scientists factor increase, 1980s - 2000s =    1.503
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 463)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',463,0)">line 463</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('AggregateBLSIPP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m', 503)" style="font-weight:bold">AggregateBLSIPP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Aggregate/AggregateBLSIPP.m',503,0)">line 503</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 56)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',56,0)">line 56</a>)] 

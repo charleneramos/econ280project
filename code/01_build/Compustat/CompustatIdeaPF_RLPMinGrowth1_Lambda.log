@@ -1,0 +1,1307 @@
+CompustatIdeaPF_RLPMinGrowth1_Lambda                 23-Oct-2024 
+ 
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = Lambda
+   Robustness check -- diminishing returns to R&D: reports S^Lambda everywhere
+             Lambda =  0.7500
+=============================================================
+ 
+ 
+ 
+=============================================================
+ 
+KEY PARAMETER VALUES:    CaseName = RLPMinGrowth1
+         Idea Output Measure = RLP
+            DotComCorrection =     0
+       WeightingByScientists =     1
+  RequireAllDecadesPosGrowth =     0
+ RequireIncreasingScientists =     0
+           MinimumGrowthRate =  0.0100
+               WindsorizeTop =     0
+              DHSGrowthRates =     0
+          IdeaGrowthApproach = Mean
+ 
+         This is the baseline sampling frame:
+          - 2 consecutive decades of postive MktCap/Sales/EmpGrowth
+          - But no requirement that effective scientists increase between the two
+ 
+=============================================================
+ 
+The starting number of firms (some RND after 1980) is    15128
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 98)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',98,0)">line 98</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 111)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',111,0)">line 111</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+Replacing 26853 decade observations with zero/negative MedianScientists with NaN
+(Recall our earlier condition was just that SOME YEAR had positive RND)
+ 
+Median Effective Scientists, by decade (after lambda adjustment)
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                          612        1759        3885        6439
+Alphabet Inc                        NaN         NaN         709        4979
+Apple Inc                           298        1041         717        3103
+Microsoft Corp                      169        1215        4322        6313
+North American Philips Corp         374         531         NaN         NaN
+Genzyme Corp                        NaN         223         739        1028
+Merck & Co                         1098        1867        3162        5218
+Novartis Ag                         NaN        2875        3502        6042
+Bayer Ag                            NaN        2610        2637        3281
+Johnson & Johnson                  1183        2036        4415        5483
+Pfizer Inc                          802        1854        5677        5302
+Honeywell International Inc         890         691        1119        1730
+Cisco Systems Inc                    17         413        3298        4177
+Siemens Ag                          NaN        4863        4669        3986
+General Electric Co                2186        1912        2343        3370
+Honda Motor Co Ltd                 1411        2544        3613        4298
+Ford Motor Co                      3753        5387        5554        4219
+Boeing Co                          1572        2248        2091        2678
+Lockheed Martin Corp               1062        1290        1179         836
+Du Pont (e I) De Nemours           2260        2089        1512        1872
+Dow Chemical                       1354        1684        1268        1666
+American Software  -cl A             30          51          28          32
+Materion Corp                        42          41          21          41
+ 
+Ignoring IncreasingScientists by setting equal to 1 always
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                            1           1           1           1
+Alphabet Inc                          1           1           1           1
+Apple Inc                             1           1           1           1
+Microsoft Corp                        1           1           1           1
+North American Philips Corp           1           1           1           1
+Genzyme Corp                          1           1           1           1
+Merck & Co                            1           1           1           1
+Novartis Ag                           1           1           1           1
+Bayer Ag                              1           1           1           1
+Johnson & Johnson                     1           1           1           1
+Pfizer Inc                            1           1           1           1
+Honeywell International Inc           1           1           1           1
+Cisco Systems Inc                     1           1           1           1
+Siemens Ag                            1           1           1           1
+General Electric Co                   1           1           1           1
+Honda Motor Co Ltd                    1           1           1           1
+Ford Motor Co                         1           1           1           1
+Boeing Co                             1           1           1           1
+Lockheed Martin Corp                  1           1           1           1
+Du Pont (e I) De Nemours              1           1           1           1
+Dow Chemical                          1           1           1           1
+American Software  -cl A              1           1           1           1
+Materion Corp                         1           1           1           1
+ 
+Number of Idea Growth observations, by decade
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                            9          10           8           6
+Alphabet Inc                          0           0           4           6
+Apple Inc                             9          10           8           6
+Microsoft Corp                        4          10           8           6
+North American Philips Corp           9           2           0           0
+Genzyme Corp                          0           0           4           1
+Merck & Co                            9          10           8           6
+Novartis Ag                           0           3           8           6
+Bayer Ag                              0           6           8           6
+Johnson & Johnson                     9          10           8           6
+Pfizer Inc                            9          10           8           6
+Honeywell International Inc           9          10           8           6
+Cisco Systems Inc                     0           9           8           6
+Siemens Ag                            0           5           8           6
+General Electric Co                   9          10           8           6
+Honda Motor Co Ltd                    9          10           8           5
+Ford Motor Co                         9          10           8           6
+Boeing Co                             9          10           8           6
+Lockheed Martin Corp                  9           8           8           6
+Du Pont (e I) De Nemours              9          10           8           6
+Dow Chemical                          9          10           8           6
+American Software  -cl A              7          10           8           5
+Materion Corp                         9          10           8           6
+ 
+                                   1980s       1990s       2000s       2010s
+----------------------------------------------------------------------------
+Block Drug  -cl A                      9          10           0           0
+Blount Intl Inc                        9          10           8           6
+Mentor Group Intl Cp                   5           0           0           0
+Bluefield Supply Co                    5           0           0           0
+Bluewater Oil & Gas Ltd                0           0           0           0
+Bobbie Brooks Inc                      7           6           0           0
+Boeing Co                              9          10           8           6
+Bogue Electric Mfg Co                  6           6           0           0
+Officemax Inc                          9          10           8           3
+Circa Pharmaceuticals Inc              9           3           0           0
+Bbn Corp                               9           7           0           0
+Bolt Technology Corp                   8          10           8           5
+Cardiodynamics Intl Corp               7           7           8           0
+Camelot Corp                           9           7           0           0
+Bomarko Inc                            7           0           0           0
+Books Mobile Inc                       6           0           0           0
+Boole & Babbage Inc                    6           9           0           0
+Boonton Electronics Corp               9          10           0           0
+Booth Inc                              6           0           0           0
+Bordeaux Petroleum Co                  1           0           0           0
+Hexion Inc                             9          10           8           6
+Burns Intl Services Corp               9           7           0           0
+Boro Recycling Inc                     1           0           0           0
+Boston Digital Corp                    9           2           0           0
+Rexam Plc                              9          10           8           6
+Entrprize Corp                         9           8           8           1
+Bowl America Inc  -cl A                9          10           8           6
+Bowles Fluidics Corp                   5           9           0           0
+Bowline Corp                           9           6           0           0
+White Electronic Designs Cp            9          10           8           0
+Bowne & Co Inc                         9          10           8           0
+Bradley Real Estate Inc                0           4           0           0
+Brady Corp                             5          10           8           6
+Brae Corp                              8           0           0           0
+Richey Electrs Inc                     6           8           0           0
+Braun Engineering                      4           0           0           0
+Bravo Knits Inc                        0           0           0           0
+Brentwood Instruments Inc              4           0           0           0
+Bridge Communications Inc              2           0           0           0
+Brigadier Industries Corp-sc           0           0           0           0
+Briggs & Stratton                      9          10           8           6
+Msgi Security Solutions Inc            2           8           6           0
+Bristol-myers Squibb Co                9          10           8           6
+Catalyst Paper Corp                    9          10           8           6
+Telus Corp                             9           8           4           6
+British Land Of America                7           0           0           0
+Bp Plc                                 9          10           8           6
+Bt Group Plc                           6          10           8           6
+Britt Technology Corp                  6           0           0           0
+Sharebase Corp                         5           0           0           0
+Integra A Hotel & Rest                 9           1           0           0
+Brooks Fashion Stores                  3           0           0           0
+Bross Utilities Service Corp           1           0           0           0
+Bns Holding Co                         9          10           4           0
+Brown (tom) Inc                        9          10           4           0
+Brunos Inc                             9           9           0           0
+Brunswick Corp                         9          10           8           6
+Brunton Co                             1           0           0           0
+Materion Corp                          9          10           8           6
+Bryan Steam Corp                       9           9           0           0
+Buck Engineering Co Inc                9           0           0           0
+Buell Industries Inc                   9           0           0           0
+Bueno Coeur D Alene Inc                0           0           0           0
+Builders Investment Group              2           0           0           0
+Building & Land Technology             4           0           0           0
+Bulova Corp                            9          10           4           0
+Bun & Burger Intl Inc                  1           0           0           0
+Bundy Corp                             7           0           0           0
+Buning International Inc               0           0           0           0
+Bunker Ramo Corp                       0           0           0           0
+Bunting Inc                            7           0           0           0
+Burgess Inds                           1           0           0           0
+Burlington Coat Factory Invs           5           9           6           4
+Burlington Industries Inc              9           8           3           0
+Burndy Corp                            7           0           0           0
+Burnley Corp                           9           0           0           0
+Burr-brown Corp                        7          10           0           0
+Burrillville Racing Assn               0           0           0           0
+Burris Chemical Inc                    6           0           0           0
+Unisys Corp                            9          10           8           6
+Burst Agritech Inc                     5           2           0           0
+Burton Energy & Solar Tech             1           0           0           0
+Emex Corp                              9          10           2           0
+Bush Industries  -cl A                 5          10           3           0
+Business Computer Network              0           0           0           0
+Business Computing Intl Inc            0           0           0           0
+Butler Mfg Co                          9          10           4           0
+Butler National Corp                   9          10           8           5
+Bynamics Inc                           0           0           0           0
+C & R Clothiers Inc                    9           2           0           0
+Cae Inc                                9           2           3           6
+Cbi Industries Inc                     9           5           0           0
+Cci Corp  -old                         1           0           0           0
+Ccx Inc                                9           4           0           0
+Acxiom Corp                            5          10           8           5
+C-cor Inc                              8          10           8           0
+Airguide Inc                           8           5           0           0
+Cf & I Steel Corp                      9           2           0           0
+Cfs Continental Inc                    4           0           0           0
+Cga Computers Inc                      3           0           0           0
+C G S Scientific Corp                  9           2           0           0
+ 
+Mean (or median) Idea Growth (all observations), by decade
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                        0.068       0.085      -0.017       0.011
+Alphabet Inc                        NaN         NaN       0.034      -0.013
+Apple Inc                         0.086       0.033       0.035       0.084
+Microsoft Corp                    0.057       0.093      -0.021       0.023
+North American Philips Corp       0.023       0.090         NaN         NaN
+Genzyme Corp                        NaN         NaN       0.027       0.051
+Merck & Co                        0.046       0.080      -0.057       0.110
+Novartis Ag                         NaN       0.028       0.023      -0.026
+Bayer Ag                            NaN       0.034       0.069      -0.008
+Johnson & Johnson                 0.024       0.065       0.051      -0.011
+Pfizer Inc                        0.026       0.064       0.046       0.010
+Honeywell International Inc      -0.049       0.036       0.021       0.012
+Cisco Systems Inc                   NaN       0.063      -0.027       0.021
+Siemens Ag                          NaN       0.012       0.032      -0.038
+General Electric Co               0.080       0.035       0.034      -0.081
+Honda Motor Co Ltd                0.003       0.029       0.009      -0.008
+Ford Motor Co                     0.081       0.031       0.032       0.023
+Boeing Co                        -0.002       0.065       0.019       0.037
+Lockheed Martin Corp              0.015       0.036       0.043       0.005
+Du Pont (e I) De Nemours          0.056      -0.004       0.046      -0.010
+Dow Chemical                      0.005       0.032       0.086       0.007
+American Software  -cl A         -0.019       0.003       0.050      -0.019
+Materion Corp                     0.025       0.010       0.071       0.026
+ 
+Mean (or median) Idea Growth (at least 3 observations), by decade
+  The number of firms remaining now is    10082
+ 
+                                  1980s       1990s       2000s       2010s
+---------------------------------------------------------------------------
+Intel Corp                        0.068       0.085      -0.017       0.011
+Alphabet Inc                        NaN         NaN       0.034      -0.013
+Apple Inc                         0.086       0.033       0.035       0.084
+Microsoft Corp                    0.057       0.093      -0.021       0.023
+North American Philips Corp       0.023         NaN         NaN         NaN
+Genzyme Corp                        NaN         NaN       0.027         NaN
+Merck & Co                        0.046       0.080      -0.057       0.110
+Novartis Ag                         NaN       0.028       0.023      -0.026
+Bayer Ag                            NaN       0.034       0.069      -0.008
+Johnson & Johnson                 0.024       0.065       0.051      -0.011
+Pfizer Inc                        0.026       0.064       0.046       0.010
+Honeywell International Inc      -0.049       0.036       0.021       0.012
+Cisco Systems Inc                   NaN       0.063      -0.027       0.021
+Siemens Ag                          NaN       0.012       0.032      -0.038
+General Electric Co               0.080       0.035       0.034      -0.081
+Honda Motor Co Ltd                0.003       0.029       0.009      -0.008
+Ford Motor Co                     0.081       0.031       0.032       0.023
+Boeing Co                        -0.002       0.065       0.019       0.037
+Lockheed Martin Corp              0.015       0.036       0.043       0.005
+Du Pont (e I) De Nemours          0.056      -0.004       0.046      -0.010
+Dow Chemical                      0.005       0.032       0.086       0.007
+American Software  -cl A         -0.019       0.003       0.050      -0.019
+Materion Corp                     0.025       0.010       0.071       0.026
+ 
+                                   1980s       1990s       2000s       2010s
+----------------------------------------------------------------------------
+Block Drug  -cl A                  0.009       0.043         NaN         NaN
+Blount Intl Inc                    0.022      -0.016      -0.011       0.025
+Mentor Group Intl Cp               0.709         NaN         NaN         NaN
+Bluefield Supply Co               -0.028         NaN         NaN         NaN
+Bluewater Oil & Gas Ltd              NaN         NaN         NaN         NaN
+Bobbie Brooks Inc                 -0.317       0.153         NaN         NaN
+Boeing Co                         -0.002       0.065       0.019       0.037
+Bogue Electric Mfg Co              0.035      -0.072         NaN         NaN
+Officemax Inc                      0.055       0.006      -0.043      -0.008
+Circa Pharmaceuticals Inc          0.063      -0.042         NaN         NaN
+Bbn Corp                           0.064       0.001         NaN         NaN
+Bolt Technology Corp              -0.038       0.052       0.064      -0.026
+Cardiodynamics Intl Corp           0.118      -0.002       0.063         NaN
+Camelot Corp                       0.028      -0.167         NaN         NaN
+Bomarko Inc                        0.057         NaN         NaN         NaN
+Books Mobile Inc                  -0.051         NaN         NaN         NaN
+Boole & Babbage Inc                0.052       0.032         NaN         NaN
+Boonton Electronics Corp           0.017       0.030         NaN         NaN
+Booth Inc                          0.099         NaN         NaN         NaN
+Bordeaux Petroleum Co                NaN         NaN         NaN         NaN
+Hexion Inc                        -0.007       0.052       0.098       0.021
+Burns Intl Services Corp          -0.098      -0.038         NaN         NaN
+Boro Recycling Inc                   NaN         NaN         NaN         NaN
+Boston Digital Corp               -0.031         NaN         NaN         NaN
+Rexam Plc                         -0.037      -0.008       0.066       0.097
+Entrprize Corp                     0.068       0.022       0.291         NaN
+Bowl America Inc  -cl A            0.013      -0.007      -0.006      -0.014
+Bowles Fluidics Corp              -0.035       0.000         NaN         NaN
+Bowline Corp                      -0.223       0.071         NaN         NaN
+White Electronic Designs Cp        0.047       0.102      -0.004         NaN
+Bowne & Co Inc                     0.004      -0.006       0.049         NaN
+Bradley Real Estate Inc              NaN      -0.255         NaN         NaN
+Brady Corp                         0.028       0.035      -0.036      -0.015
+Brae Corp                         -0.142         NaN         NaN         NaN
+Richey Electrs Inc                 0.386      -0.097         NaN         NaN
+Braun Engineering                  0.035         NaN         NaN         NaN
+Bravo Knits Inc                      NaN         NaN         NaN         NaN
+Brentwood Instruments Inc          0.032         NaN         NaN         NaN
+Bridge Communications Inc            NaN         NaN         NaN         NaN
+Brigadier Industries Corp-sc         NaN         NaN         NaN         NaN
+Briggs & Stratton                  0.026       0.023       0.033       0.005
+Msgi Security Solutions Inc          NaN       0.055      -0.021         NaN
+Bristol-myers Squibb Co            0.029       0.056       0.003      -0.018
+Catalyst Paper Corp                0.048       0.039       0.013       0.010
+Telus Corp                         0.032       0.055      -0.044      -0.017
+British Land Of America            0.070         NaN         NaN         NaN
+Bp Plc                            -0.044       0.072       0.104      -0.026
+Bt Group Plc                       0.140       0.062       0.042      -0.052
+Britt Technology Corp             -0.115         NaN         NaN         NaN
+Sharebase Corp                     0.080         NaN         NaN         NaN
+Integra A Hotel & Rest             0.002         NaN         NaN         NaN
+ 
+ 
+-----------------------
+ Idea TFP Calculations
+-----------------------
+ 
+  >>>> Updating growth rates so lowest value is   0.0100
+  >>>> This affects  42.34 percent of the observations.
+       MeanIdeaGrowth BEFORE       MeanIdeaGrowth AFTER
+ 
+      d1      d2      d3      d4      d1      d2      d3      d4
+----------------------------------------------------------------
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+   0.035     NaN     NaN     NaN   0.035     NaN     NaN     NaN
+  -0.047     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.067   0.011  -0.022     NaN   0.067   0.011   0.010     NaN
+  -0.057     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.025     NaN     NaN     NaN   0.025     NaN     NaN     NaN
+   0.033   0.035     NaN     NaN   0.033   0.035     NaN     NaN
+  -0.075     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.010     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.039     NaN     NaN     NaN   0.039     NaN     NaN     NaN
+  -0.039   0.024  -0.007     NaN   0.010   0.024   0.010     NaN
+   0.086     NaN     NaN     NaN   0.086     NaN     NaN     NaN
+  -0.018   0.057     NaN     NaN   0.010   0.057     NaN     NaN
+  -0.082   0.112     NaN     NaN   0.010   0.112     NaN     NaN
+   0.170   0.013   0.036     NaN   0.170   0.013   0.036     NaN
+   0.041  -0.008     NaN     NaN   0.041   0.010     NaN     NaN
+  -0.021   0.199     NaN     NaN   0.010   0.199     NaN     NaN
+  -0.057     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+  -0.066     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.061   0.019     NaN     NaN   0.061   0.019     NaN     NaN
+   0.287     NaN     NaN     NaN   0.287     NaN     NaN     NaN
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+  -0.217  -0.240   0.252   0.050   0.010   0.010   0.252   0.050
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+   0.042  -0.087     NaN     NaN   0.042   0.010     NaN     NaN
+  -0.019   0.108     NaN     NaN   0.010   0.108     NaN     NaN
+   0.067   0.015   0.028     NaN   0.067   0.015   0.028     NaN
+   0.063     NaN     NaN     NaN   0.063     NaN     NaN     NaN
+  -0.126     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+  -0.069     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.441     NaN     NaN     NaN   0.441     NaN     NaN     NaN
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+  -0.002   0.003   0.006  -0.024   0.010   0.010   0.010   0.010
+  -0.088   0.164     NaN     NaN   0.010   0.164     NaN     NaN
+     NaN     NaN     NaN     NaN     NaN     NaN     NaN     NaN
+   0.036   0.035   0.038  -0.086   0.036   0.035   0.038   0.010
+   0.083   0.031     NaN     NaN   0.083   0.031     NaN     NaN
+   0.011     NaN     NaN     NaN   0.011     NaN     NaN     NaN
+     NaN     NaN  -0.227     NaN     NaN     NaN   0.010     NaN
+  -0.002     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+  -0.034   0.019     NaN     NaN   0.010   0.019     NaN     NaN
+   0.020     NaN     NaN     NaN   0.020     NaN     NaN     NaN
+  -0.007   0.043     NaN     NaN   0.010   0.043     NaN     NaN
+  -0.047     NaN     NaN     NaN   0.010     NaN     NaN     NaN
+   0.017     NaN     NaN     NaN   0.017     NaN     NaN     NaN
+  -0.015   0.083  -0.042   0.039   0.010   0.083   0.010   0.039
+   0.020  -0.002     NaN     NaN   0.020   0.010     NaN     NaN
+   0.032   0.136  -0.007     NaN   0.032   0.136   0.010     NaN
+ 
+Honeywell International Inc
+EffSci:     890     691    1119    1730
+MCGrow:   0.010   0.036   0.021   0.012
+IncSci:       1       1       1       1
+Before:   0.001   0.005   0.002   0.001
+After :   1.000   4.577   1.637   0.623
+ 
+American Software  -cl A
+EffSci:      30      51      28      32
+MCGrow:   0.010   0.010   0.050   0.010
+IncSci:       1       1       1       1
+Before:   0.034   0.019   0.175   0.031
+After :   1.000   0.576   5.191   0.914
+ 
+Apple Inc
+EffSci:     298    1041     717    3103
+MCGrow:   0.086   0.033   0.035   0.084
+IncSci:       1       1       1       1
+Before:   0.029   0.003   0.005   0.003
+After :   1.000   0.110   0.168   0.094
+ 
+Boeing Co
+EffSci:    1572    2248    2091    2678
+MCGrow:   0.010   0.065   0.019   0.037
+IncSci:       1       1       1       1
+Before:   0.001   0.003   0.001   0.001
+After :   1.000   4.565   1.431   2.169
+ 
+Materion Corp
+EffSci:      42      41      21      41
+MCGrow:   0.025   0.010   0.071   0.026
+IncSci:       1       1       1       1
+Before:   0.059   0.025   0.333   0.064
+After :   1.000   0.415   5.611   1.086
+ 
+Dow Chemical
+EffSci:    1354    1684    1268    1666
+MCGrow:   0.010   0.032   0.086   0.010
+IncSci:       1       1       1       1
+Before:   0.001   0.002   0.007   0.001
+After :   1.000   2.535   9.154   0.813
+ 
+Du Pont (e I) De Nemours
+EffSci:    2260    2089    1512    1872
+MCGrow:   0.056   0.010   0.046   0.010
+IncSci:       1       1       1       1
+Before:   0.002   0.000   0.003   0.001
+After :   1.000   0.194   1.229   0.217
+ 
+Environmental Tectonics Corp
+EffSci:       7       7       5       8
+MCGrow:   0.010   0.018   0.010   0.010
+IncSci:       1       1       1       1
+Before:   0.149   0.272   0.208   0.121
+After :   1.000   1.820   1.391   0.813
+ 
+First Hartford Corp
+EffSci:     NaN     NaN     NaN     NaN
+MCGrow:     NaN     NaN   0.010   0.246
+IncSci:       1       1       1       1
+Before:     NaN     NaN     NaN     NaN
+After :     NaN     NaN     NaN     NaN
+ 
+Ford Motor Co
+EffSci:    3753    5387    5554    4219
+MCGrow:   0.081   0.031   0.032   0.023
+IncSci:       1       1       1       1
+Before:   0.002   0.001   0.001   0.001
+After :   1.000   0.268   0.267   0.248
+ 
+General Electric Co
+EffSci:    2186    1912    2343    3370
+MCGrow:   0.080   0.035   0.034   0.010
+IncSci:       1       1       1       1
+Before:   0.004   0.002   0.001   0.000
+After :   1.000   0.497   0.393   0.081
+ 
+Hach Co
+EffSci:      22      37     NaN     NaN
+MCGrow:   0.033   0.033     NaN     NaN
+IncSci:       1       1       1       1
+Before:   0.149   0.092     NaN     NaN
+After :   1.000   0.614     NaN     NaN
+ 
+Honda Motor Co Ltd
+EffSci:    1411    2544    3613    4298
+MCGrow:   0.010   0.029   0.010   0.010
+IncSci:       1       1       1       1
+Before:   0.001   0.001   0.000   0.000
+After :   1.000   1.603   0.390   0.328
+ 
+Intel Corp
+EffSci:     612    1759    3885    6439
+MCGrow:   0.068   0.085   0.010   0.011
+IncSci:       1       1       1       1
+Before:   0.011   0.005   0.000   0.000
+After :   1.000   0.434   0.023   0.015
+ 
+Johnson & Johnson
+EffSci:    1183    2036    4415    5483
+MCGrow:   0.024   0.065   0.051   0.010
+IncSci:       1       1       1       1
+Before:   0.002   0.003   0.001   0.000
+After :   1.000   1.574   0.562   0.089
+ 
+Xcerra Corp
+EffSci:     112      86     158     123
+MCGrow:   0.052   0.034   0.019   0.010
+IncSci:       1       1       1       1
+Before:   0.046   0.039   0.012   0.008
+After :   1.000   0.856   0.264   0.177
+ 
+Lockheed Martin Corp
+EffSci:    1062    1290    1179     836
+MCGrow:   0.015   0.036   0.043   0.010
+IncSci:       1       1       1       1
+Before:   0.001   0.003   0.004   0.001
+After :   1.000   1.990   2.648   0.858
+ 
+Merck & Co
+EffSci:    1098    1867    3162    5218
+MCGrow:   0.046   0.080   0.010   0.110
+IncSci:       1       1       1       1
+Before:   0.004   0.004   0.000   0.002
+After :   1.000   1.012   0.075   0.498
+ 
+Montgomery Ward Hldg  -cl A
+EffSci:     NaN     NaN     NaN     NaN
+MCGrow:   0.010   0.010     NaN     NaN
+IncSci:       1       1       1       1
+Before:     NaN     NaN     NaN     NaN
+After :     NaN     NaN     NaN     NaN
+ 
+Pfizer Inc
+EffSci:     802    1854    5677    5302
+MCGrow:   0.026   0.064   0.046   0.010
+IncSci:       1       1       1       1
+Before:   0.003   0.003   0.001   0.000
+After :   1.000   1.068   0.249   0.058
+ 
+Spire Corp
+EffSci:       6       2       5       5
+MCGrow:   0.098   0.010   0.023   0.010
+IncSci:       1       1       1       1
+Before:   1.638   0.490   0.431   0.222
+After :   1.000   0.299   0.263   0.135
+ 
+Starrett (l.s.) Co  -cl A
+EffSci:      16      21      15       9
+MCGrow:   0.010   0.010   0.010   0.010
+IncSci:       1       1       1       1
+Before:   0.064   0.047   0.065   0.114
+After :   1.000   0.743   1.011   1.787
+ 
+Microsoft Corp
+EffSci:     169    1215    4322    6313
+MCGrow:   0.057   0.093   0.010   0.023
+IncSci:       1       1       1       1
+Before:   0.034   0.008   0.000   0.000
+After :   1.000   0.226   0.007   0.011
+ 
+Idex Corp
+EffSci:     NaN      31      64      89
+MCGrow:     NaN   0.023   0.031   0.013
+IncSci:       1       1       1       1
+Before:     NaN   0.076   0.049   0.014
+After :     NaN   1.000   0.645   0.187
+ 
+Siemens Ag
+EffSci:     NaN    4863    4669    3986
+MCGrow:     NaN   0.012   0.032   0.010
+IncSci:       1       1       1       1
+Before:     NaN   0.000   0.001   0.000
+After :     NaN   1.000   2.713   0.992
+ 
+U S Home Systems Inc
+EffSci:     NaN     NaN     NaN     NaN
+MCGrow:     NaN   0.080   0.022     NaN
+IncSci:       1       1       1       1
+Before:     NaN     NaN     NaN     NaN
+After :     NaN     NaN     NaN     NaN
+ 
+Cisco Systems Inc
+EffSci:      17     413    3298    4177
+MCGrow:     NaN   0.063   0.010   0.021
+IncSci:       1       1       1       1
+Before:     NaN   0.015   0.000   0.000
+After :     NaN   1.000   0.020   0.032
+ 
+Boundless Corp
+EffSci:     NaN      27       5     NaN
+MCGrow:     NaN   0.348   0.010     NaN
+IncSci:       1       1       1       1
+Before:     NaN   1.267   0.213     NaN
+After :     NaN   1.000   0.168     NaN
+ 
+Simtrol Inc
+EffSci:     NaN       6       4     NaN
+MCGrow:     NaN   0.010   0.010     NaN
+IncSci:       1       1       1       1
+Before:     NaN   0.161   0.265     NaN
+After :     NaN   1.000   1.646     NaN
+ 
+Arrow International Inc
+EffSci:     NaN      53      82     NaN
+MCGrow:     NaN   0.010   0.010     NaN
+IncSci:       1       1       1       1
+Before:     NaN   0.019   0.012     NaN
+After :     NaN   1.000   0.643     NaN
+ 
+Infocrossing Inc
+EffSci:     NaN      12     NaN     NaN
+MCGrow:     NaN   0.019   0.111     NaN
+IncSci:       1       1       1       1
+Before:     NaN   0.163     NaN     NaN
+After :     NaN     NaN     NaN     NaN
+ 
+Incyte Corp
+EffSci:     NaN     111     260     376
+MCGrow:     NaN     NaN   0.010   0.527
+IncSci:       1       1       1       1
+Before:     NaN     NaN   0.004   0.140
+After :     NaN     NaN   1.000  36.411
+ 
+Mti Technology Corp
+EffSci:     NaN      54       6     NaN
+MCGrow:     NaN   0.070   0.023     NaN
+IncSci:       1       1       1       1
+Before:     NaN   0.130   0.387     NaN
+After :     NaN   1.000   2.979     NaN
+ 
+L-1 Identity Solutions Inc
+EffSci:     NaN       3      21      67
+MCGrow:     NaN   0.010   0.010     NaN
+IncSci:       1       1       1       1
+Before:     NaN   0.353   0.048     NaN
+After :     NaN   1.000   0.135     NaN
+ 
+Zap
+EffSci:     NaN       3       3       7
+MCGrow:     NaN     NaN   0.010   0.010
+IncSci:       1       1       1       1
+Before:     NaN     NaN   0.332   0.138
+After :     NaN     NaN   1.000   0.415
+ 
+Bayer Ag
+EffSci:     NaN    2610    2637    3281
+MCGrow:     NaN   0.034   0.069   0.010
+IncSci:       1       1       1       1
+Before:     NaN   0.001   0.003   0.000
+After :     NaN   1.000   2.008   0.234
+ 
+Novartis Ag
+EffSci:     NaN    2875    3502    6042
+MCGrow:     NaN   0.028   0.023   0.010
+IncSci:       1       1       1       1
+Before:     NaN   0.001   0.001   0.000
+After :     NaN   1.000   0.687   0.170
+ 
+Elite Pharmaceuticals Inc
+EffSci:     NaN      11      13      10
+MCGrow:     NaN     NaN   0.474   0.010
+IncSci:       1       1       1       1
+Before:     NaN     NaN   3.539   0.103
+After :     NaN     NaN   1.000   0.029
+ 
+Golden Entertainment Inc
+EffSci:     NaN     NaN     NaN     NaN
+MCGrow:     NaN     NaN   0.010   0.010
+IncSci:       1       1       1       1
+Before:     NaN     NaN     NaN     NaN
+After :     NaN     NaN     NaN     NaN
+ 
+Alphabet Inc
+EffSci:     NaN     NaN     709    4979
+MCGrow:     NaN     NaN   0.034   0.010
+IncSci:       1       1       1       1
+Before:     NaN     NaN   0.005   0.000
+After :     NaN     NaN   1.000   0.042
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 303)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',303,0)">line 303</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 331)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',331,0)">line 331</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+ 
+ 
+ 
+Note: "Mean" below is 2^(Mean(log2(.)))
+ 
+-----------------------------------------------------------------
+ 
+The number of firms with 2 decades is   2068
+Idea TFP: Percentiles for 2 decades (+avg growth rate // half life)
+* Mean    0.9959    0.3495       NaN       NaN     -0.1047        7
+1/Mean    1.0041    2.8609       NaN       NaN
+     0    0.0066    0.0003       NaN       NaN     -0.3194        2
+    25    1.0000    0.0771       NaN       NaN     -0.2562        3
+    50    1.0000    0.2844       NaN       NaN     -0.1257        6
+    75    1.0000    1.1229       NaN       NaN      0.0116       60
+   100    5.9570 1939.4135       NaN       NaN      0.5786        1
+ 
+Effective Scientists: Percentiles for 2 decades (+avg growth rate // Yrs2Double)
+* Mean     1.000     1.439       NaN       NaN      0.0364       19
+     0     1.000     0.020       NaN       NaN     -0.3892        2
+    25     1.000     0.966       NaN       NaN     -0.0035      201
+    50     1.000     1.435       NaN       NaN      0.0361       19
+    75     1.000     1.949       NaN       NaN      0.0667       10
+   100     1.000   189.012       NaN       NaN      0.5242        1
+ 
+IdeaGrowth     0.065     0.035       NaN       NaN      0.0500
+      Implied beta =     2.09
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 411)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',411,0)">line 411</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 426)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',426,0)">line 426</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 432)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',432,0)">line 432</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 449)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',449,0)">line 449</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+ 
+ 
+Key Statistics
+Percent of firms with idea TFP factor >= 1
+   Across 2 decades:   39.410 percent
+ 
+Percent of firms with idea TFP neither rising nor falling by more than 1% per year on average
+   Across 2 decades:    4.352 percent
+ 
+-----------------------------------------------------------------
+ 
+The number of firms with 3 decades is    846
+Idea TFP: Percentiles for 3 decades (+avg growth rate // half life)
+* Mean    1.0000    0.5517    0.2730       NaN     -0.0649       11
+1/Mean    1.0000    1.8126    3.6627       NaN
+     0    1.0000    0.0017    0.0003       NaN     -0.4015        2
+    25    1.0000    0.1786    0.0686       NaN     -0.1340        5
+    50    1.0000    0.6875    0.2750       NaN     -0.0646       11
+    75    1.0000    2.0255    0.6995       NaN     -0.0179       39
+   100    1.0000  134.6129  575.8646       NaN      0.3178        2
+ 
+Effective Scientists: Percentiles for 3 decades (+avg growth rate // Yrs2Double)
+* Mean     1.000     1.672     1.799       NaN      0.0294       24
+     0     1.000     0.041     0.006       NaN     -0.2540        3
+    25     1.000     1.089     1.050       NaN      0.0024      286
+    50     1.000     1.332     1.769       NaN      0.0285       24
+    75     1.000     2.159     2.782       NaN      0.0512       14
+   100     1.000    31.101   103.067       NaN      0.2318        3
+ 
+IdeaGrowth     0.054     0.041     0.027       NaN      0.0408
+      Implied beta =     1.59
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 411)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',411,0)">line 411</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 426)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',426,0)">line 426</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 432)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',432,0)">line 432</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 449)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',449,0)">line 449</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+ 
+ 
+Key Statistics
+Percent of firms with idea TFP factor >= 1
+   Across 3 decades:   28.723 percent
+ 
+Percent of firms with idea TFP neither rising nor falling by more than 1% per year on average
+   Across 3 decades:    7.801 percent
+ 
+-----------------------------------------------------------------
+ 
+The number of firms with 4 decades is    445
+Idea TFP: Percentiles for 4 decades (+avg growth rate // half life)
+* Mean    1.0000    0.5978    0.3751    0.2038     -0.0530       13
+1/Mean    1.0000    1.6729    2.6658    4.9077
+     0    1.0000    0.0036    0.0019    0.0012     -0.2231        3
+    25    1.0000    0.2721    0.1703    0.0810     -0.0838        8
+    50    1.0000    0.7940    0.3931    0.2469     -0.0466       15
+    75    1.0000    1.3512    0.8081    0.7074     -0.0115       60
+   100    1.0000   26.6232   75.1724 1220.8044      0.2369        3
+ 
+Effective Scientists: Percentiles for 4 decades (+avg growth rate // Yrs2Double)
+* Mean     1.000     1.654     2.040     2.209      0.0264       26
+     0     1.000     0.133     0.095     0.015     -0.1397        5
+    25     1.000     1.114     0.970     1.028      0.0009      760
+    50     1.000     1.583     1.634     1.736      0.0184       38
+    75     1.000     2.294     3.440     4.173      0.0476       15
+   100     1.000    55.183   118.309   158.512      0.1689        4
+ 
+IdeaGrowth     0.049     0.042     0.032     0.019      0.0357
+      Implied beta =     1.49
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 411)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',411,0)">line 411</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 426)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',426,0)">line 426</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 432)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',432,0)">line 432</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 449)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',449,0)">line 449</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+ 
+ 
+Key Statistics
+Percent of firms with idea TFP factor >= 1
+   Across 4 decades:   25.169 percent
+ 
+Percent of firms with idea TFP neither rising nor falling by more than 1% per year on average
+   Across 4 decades:   13.708 percent
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 467)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',467,0)">line 467</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('CompustatIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m', 505)" style="font-weight:bold">CompustatIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/CompustatIdeaPF.m',505,0)">line 505</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterCompustat', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m', 61)" style="font-weight:bold">MasterCompustat</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/MasterCompustat.m',61,0)">line 61</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 76)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',76,0)">line 76</a>)] 

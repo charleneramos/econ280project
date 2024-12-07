@@ -1,0 +1,249 @@
+Cancer_Lambda                 23-Oct-2024 
+ 
+  Cancer.m   
+ 
+  Idea TFP for Cancer (all types) mortality
+ 
+  Note: For Breast Cancer, I used the U.S. mortality rate data. I was surprised that
+   the death rate from breast cancer *rose* betwen 1975 and the early 1990s. It turns out the
+   same thing is true for All Cancer mortality as well. My interpretation of this is that 
+   mortality from other causes fell enough that now people are living long enough to actually *get* cancer,
+   whereas before they were not. So # of deaths could rise even though the mortality rate *conditional* on 
+   getting cancer could fall.
+ 
+   Now I'm using 5-year survival rates to measure "Probabilit of Death conditional on getting Cancer"
+   and using that as the death rate to plug into our calculation. Should be better, I think...
+
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = Lambda
+   Robustness check -- diminishing returns to R&D: reports S^Lambda everywhere
+             Lambda =  0.7500
+=============================================================
+ 
+ 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 70)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',70,0)">line 70</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 80)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',80,0)">line 80</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 37)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',37,0)">line 37</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 44)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',44,0)">line 44</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 103)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',103,0)">line 103</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 104)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',104,0)">line 104</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 132)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',132,0)">line 132</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 136)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',136,0)">line 136</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 147)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',147,0)">line 147</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+ 
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+ YearsDeathRate[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  gDeath[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  Mort_i[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+ Allmort[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  ShareC[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+      LE[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+ YrsSavd[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+    Pubs[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  Trials[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  TFPpub[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 159)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',159,0)">line 159</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)
+] 
+  TFPtri
+----------------------------------------------------------------------------------------------
+  1975   0.782 -0.0087     632    4018   0.157   15.64    21.3    1973      75  108.05   28.24
+  1976   0.775 -0.0089     645    3998   0.161   15.70    22.6    2004      83  112.57   27.18
+  1977   0.768 -0.0096     647    3866   0.167   15.95    25.7    2097     104  122.71   24.67
+  1978   0.761 -0.0109     654    3841   0.170   16.01    29.8    2190     110  135.94   27.10
+  1979   0.753 -0.0129     656    3717   0.176   16.26    36.9    2296     111  160.75   33.37
+  1980   0.743 -0.0154     663    3801   0.174   16.10    43.2    2356     101  183.49   42.83
+  1981   0.732 -0.0183     663    3706   0.179   16.29    53.4    2399     121  222.64   44.11
+  1982   0.718 -0.0216     669    3637   0.184   16.43    65.2    2490     131  261.87   49.90
+  1983   0.703 -0.0248     674    3673   0.183   16.36    74.3    2619     130  283.69   57.12
+  1984   0.686 -0.0278     679    3639   0.187   16.43    85.3    2769     156  307.98   54.76
+  1985   0.667 -0.0304     681    3661   0.186   16.39    92.7    2849     164  325.61   56.49
+  1986   0.647 -0.0325     684    3612   0.189   16.49   101.3    2901     175  349.36   57.77
+  1987   0.626 -0.0338     686    3581   0.192   16.57   107.2    2947     174  363.68   61.52
+  1988   0.605 -0.0343     689    3597   0.192   16.54   108.8    3012     192  361.14   56.63
+  1989   0.585 -0.0341     696    3487   0.200   16.78   114.2    3185     223  358.50   51.17
+  1990   0.565 -0.0328     698    3417   0.204   16.94   113.3    3231     268  350.65   42.24
+  1991   0.547 -0.0303     699    3380   0.207   17.02   106.6    3142     281  339.13   37.88
+  1992   0.531 -0.0272     696    3323   0.209   17.16    97.8    3219     303  303.73   32.22
+  1993   0.517 -0.0246     697    3405   0.205   16.98    85.6    3282     315  260.88   27.22
+  1994   0.504 -0.0229     693    3359   0.206   17.09    80.7    3390     435  238.13   18.54
+  1995   0.493 -0.0219     688    3356   0.205   17.10    76.6    3415     435  224.38   17.63
+  1996   0.482 -0.0213     680    3332   0.204   17.16    74.7    3506     418  212.94   17.84
+  1997   0.472 -0.0209     668    3304   0.202   17.23    73.0    3553     425  205.46   17.20
+  1998   0.462 -0.0205     661    3291   0.201   17.27    71.1    3629     424  196.02   16.77
+  1999   0.453 -0.0198     663    3324   0.199   17.21    67.9    3693     456  183.91   14.89
+  2000   0.444 -0.0188     658    3290   0.200   17.30    65.0    3836     437  169.55   14.89
+  2001   0.436 -0.0177     649    3245   0.200   17.42    61.5    3946     410  155.87   15.00
+  2002   0.428 -0.0167     644    3227   0.200   17.48    58.4    4102     429  142.42   13.62
+  2003   0.421 -0.0163     634    3174   0.200   17.61    57.5    4346     476  132.24   12.07
+  2004   0.414 -0.0163     621    3047   0.204   17.92    59.5    4514     523  131.85   11.37
+  2005   0.407 -0.0164     617    3047   0.202   17.94    59.6    4842     560  123.17   10.64
+  2006   0.401 -0.0166     608    2949   0.206   18.19    62.2    5050     549  123.11   11.32
+ 
+YrsSaved = Years of Life Saved per 1000 people
+TFPPublications  = Years of Life Saved per 100,000 people by each 100 publications
+TFPTrials = Years of Life Saved per 100,000 people by each clinical trial
+ 
+The implied average growth rate of Pubs is     3.03 percent
+The factor increase of Publications is    2.560
+The implied average growth rate of idea TFP (pubs) is     0.42 percent
+The factor decline of idea TFP (pubs) is    0.878
+      Half life of idea TFP (pubs)   =  -164.71 years
+ 
+The implied average growth rate of Trials is     6.40 percent
+The factor increase of Trials is    7.274
+The implied average growth rate of idea TFP (trials) is    -2.95 percent
+The factor decline of idea TFP (trials) is    2.494
+      Half life of idea TFP (trials) =    23.51 years
+ 
+In latex format...
+Pubs:   &     2.6 &     3.0 &     0.9 &     0.4\\
+Pubs:       2.6     3.0     0.9     0.4
+Trials: &     7.3 &     6.4 &     2.5 &    -2.9\\
+Trials:     7.3     6.4     2.5    -2.9
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 192)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',192,0)">line 192</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 200)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',200,0)">line 200</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 212)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',212,0)">line 212</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 216)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('mortality', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m', 237)" style="font-weight:bold">mortality</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/mortality.m',237,0)">line 237</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Cancer', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m', 216)" style="font-weight:bold">Cancer</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Mortality/Cancer.m',216,0)">line 216</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 75)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',75,0)">line 75</a>)] 

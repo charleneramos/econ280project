@@ -1,0 +1,158 @@
+CompustatIdeaPF__                 23-Oct-2024 
+ 
+ShowMasterParameters
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = 
+   
+             Lambda =        
+=============================================================
+ 
+ 
+figname=['Compustat_' CaseName];
+if strcmp(MasterCase,'Main')~=1; figname=[figname '_' MasterCase]; end;
+
+load(['CompustatData_' MasterCase]);
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('load')" style="font-weight:bold">load</a>
+CompustatData_ is not found in the current folder or on the MATLAB path, but exists in:
+    /Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication
+    Materials/Compustat
+
+<a href = "matlab:internal.matlab.desktop.commandwindow.executeCommandForUser('cd ''/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat''')">Change the MATLAB current folder</a> or <a href = "matlab:internal.matlab.desktop.commandwindow.executeCommandForUser('addpath ''/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat''')">add its folder to the MATLAB path</a>.
+} 
+figname=['Compustat_' CaseName];
+if strcmp(MasterCase,'Main')~=1; figname=[figname '_' MasterCase]; end;
+
+load(['CompustatData_' MasterCase]);
+ShowParameters
+ 
+=============================================================
+ 
+KEY PARAMETER VALUES:    CaseName = 
+{Unrecognized function or variable 'OutputMeasure'.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('ShowParameters', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/ShowParameters.m', 9)" style="font-weight:bold">ShowParameters</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Compustat/ShowParameters.m',9,0)">line 9</a>)
+disp([  '         Idea Output Measure = ' OutputMeasure]);
+                                          ^^^^^^^^^^^^^
+} 
+[T,NN]=size(EffectiveScientists);
+fprintf('The starting number of firms (some RND after 1980) is %8.0f\n',NN);
+The starting number of firms (some RND after 1980) is    15128
+
+f strcmp(OutputMeasure,'MktCap');
+{Unrecognized function or variable 'f'.
+} 
+companystring=strmat('INTC GOOGL AAPL MSFT PHG1 GENZ MRK NVS BAYRY JNJ PFE HON CSCO SIEGY GE HMC F BA LMT DD DOW AMSWA MTRN');
+companycodes=cellstr(companystring);
+SelectCompanies=[];
+for i=1:length(companycodes);
+    eval([companycodes{i} '=find(strcmp(TIC,''' companycodes{i} '''));']);
+    SelectCompanies=[SelectCompanies; eval(companystring(i,:))];
+end;
+if DotComCorrection;
+    yr0=1979;
+    dotcomyrs=(1995:2002)';
+    growthIdeaOutput1995to2002=log(IdeaOutput(2002-yr0,:)./IdeaOutput(1995-yr0,:));
+    dotcomobs=~isnan(growthIdeaOutput1995to2002);
+    IdeaOutputDotC=IdeaOutput;
+    for i=1:NN;
+        if dotcomobs(i);
+            IdeaOutputDotC(dotcomyrs-yr0,i)=exp(log(IdeaOutput(1995-yr0,i))+(dotcomyrs-1995)/7*growthIdeaOutput1995to2002(i));
+        end;
+    end;
+    IdeaGrowth=diff(log(IdeaOutputDotC));  % 1981-2015
+    if DHSGrowthRates; % (yt-yt-1)/(0.5*yt +0.5*yt-1)
+        yt=trimr(IdeaOutputDotC,1,0);
+        ylag=trimr(IdeaOutputDotC,0,1);
+        IdeaGrowth=(yt-ylag)./(.5*yt+.5*ylag);
+    end;
+end;
+{Unrecognized function or variable 'DotComCorrection'.
+} 
+
+for i=1:length(SelectCompanies);
+    sfigure(1); figsetup; hold on;
+    [ax,h1,h2]=plotyy(years,IdeaOutput(:,SelectCompanies(i))/1000,years,EffectiveScientists(:,SelectCompanies(i))/1000);
+    darkfactor=.8;
+    set(h1,'LineWidth',LW,'Color',myblue);
+    set(h2,'LineWidth',LW,'Color',mygreen);
+    set(ax(1),'ycolor',myblue*darkfactor);
+    set(ax(2),'ycolor',mygreen*darkfactor);
+    chadfig2(' ',IdeaOutputString,1,0);
+    chadfigyy(ax(2),'Scientists (thousands)');
+    if DotComCorrection;
+        plot(ax(1),dotcomyrs,IdeaOutputDotC(dotcomyrs-yr0,SelectCompanies(i))/1000,'--','Color',mypurp); 
+    end;
+    title(Name(SelectCompanies(i)),'FontName','Helvetica','FontSize',11);
+    print('-dpsc','-append',fnamegraphs);
+end;
+[Warning: printopt will be removed in a future release. To configure printer defaults, use the
+options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)] 
+{Unrecognized function or variable 'IdeaOutput'.
+} 
+NumDecades=4;
+KeepingObs=zeros(NN,NumDecades)*NaN;         % NumFirms x 4 Decades
+NumIdeaGrowth=zeros(NN,NumDecades)*NaN;    % NumFirms x 4 Decades
+MedianScientists=zeros(NN,NumDecades)*NaN;   % NumFirms x 4 Decades
+MeanIdeaGrowth=zeros(NN,NumDecades)*NaN; % NumFirms x 4 Decades
+
+DecadeYears=[yr1980s yr1990s yr2000s yr2010s];
+DecadeG    =[yr1980g yr1990g yr2000g yr2010g];
+for t=1:NumDecades;
+    NumIdeaGrowth(:,t)=sum(~isnan(IdeaGrowth(DecadeG(:,t),:)))';
+    MedianScientists(:,t)=median(EffectiveScientists(DecadeYears(:,t),:),"omitmissing")';
+    if strcmp(IdeaGrowthApproach,'Median');
+        MeanIdeaGrowth(:,t)=median(IdeaGrowth(DecadeG(:,t),:), "omitmissing")';
+    else; % Default is to use the mean (since ideas get capitalized all at once)
+        MeanIdeaGrowth(:,t)=mean(IdeaGrowth(DecadeG(:,t),:), "omitmissing")';
+    end;
+end;
+{Unrecognized function or variable 'IdeaGrowth'.
+} 
+DropIdeaGrowth=(NumIdeaGrowth<3);
+MeanIdeaGrowth(DropIdeaGrowth)=NaN;
+
+disp ' ';
+ 
+disp 'Mean (or median) Idea Growth (at least 3 observations), by decade';
+Mean (or median) Idea Growth (at least 3 observations), by decade
+numremaining=sum(any(~isnan(MeanIdeaGrowth')));
+fprintf('  The number of firms remaining now is %8.0f\n',numremaining);
+  The number of firms remaining now is        0
+cshow(Name(SelectCompanies),MeanIdeaGrowth(SelectCompanies,:),'%12.3f',DecadeNames)
+{Unrecognized function or variable 'DecadeNames'.
+} 
+NMEGraph
+{Unrecognized function or variable 'NMEGraph'.
+} 
+% MasterIdeaPF.m
+%
+%  Master program to generate the results in
+%  "Are Ideas Getting Harder to Find?"
+
+clear all; global MasterCase MasterNote Lambda StopForFigLabels;
+
+%path('ChadMatlab:',path) % For replication; use 'pathreset.m' to clean path
+% Make sure all relevant files are in path
+curpath=path;
+if isempty(strfind(curpath,'ChadMatlab')); % | isempty(strfind(curpath,'Work/procs'));
+    if exist('ChadMatlab')==7; 
+        curdir=pwd;
+        path([curdir '/ChadMatlab'],path); 
+    end; 
+end;
+
+tic;
+MasterCase='Main';
+MasterNote='Main Benchmark Case';
+Lambda=1;
+StopForFigLabels=0; % Set to 1 to pause so that fig labels can be adjusted when necessary
+cd Pharma; NMEGraph; cd ..
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cd')" style="font-weight:bold">cd</a>
+Unable to change current folder to '/Users/charleneramos/Documents/Research/Titan/Bloom et al
+2020 - Replication Materials/Compustat/Pharma' (Name is nonexistent or not a folder).
+} 
+cd Pharma; NMEGraph; cd ..

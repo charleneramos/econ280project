@@ -1,0 +1,20 @@
+CompustatRead                 14-Nov-2024 
+ 
+  CompustatRead.m    6/13/2016
+ 
+   Read the compustat/wrds data for mktcap-based idea pf analysis.
+   Raw years = 1950:2015
+
+
+WageNotes =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Currently using Mean Personal Income for Males with 4+ years of college'}
+
+
+N =
+
+       15128
+
+Timer check:  0 hours,  1 minutes, 54 seconds

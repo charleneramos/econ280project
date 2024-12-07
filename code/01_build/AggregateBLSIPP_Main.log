@@ -1,0 +1,11 @@
+AggregateBLSIPP_Main                 16-Nov-2024 
+ 
+run ../ShowMasterParameters
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('run', '/Applications/MATLAB_R2024b.app/toolbox/matlab/lang/run.m', 74)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/lang/run.m',74,0)">line 74</a>)
+../ShowMasterParameters not found.
+} 
+
+
+clear;
+global MasterCase Lambda;
+diarychad('AggregateBLSIPP',MasterCase);

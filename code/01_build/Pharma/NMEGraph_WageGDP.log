@@ -1,0 +1,100 @@
+NMEGraph_WageGDP                 23-Oct-2024 
+ 
+  NMEGraph  12/18/14
+ 
+   New molecular entities and Pharma research
+
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = WageGDP
+   Wage deflator is nominal GDP per person
+             Lambda =  1.0000
+=============================================================
+ 
+ 
+
+WageNotes =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('NMEGraph', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m', 89)" style="font-weight:bold">NMEGraph</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m',89,0)">line 89</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 44)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',44,0)">line 44</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('NMEGraph', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m', 102)" style="font-weight:bold">NMEGraph</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m',102,0)">line 102</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 44)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',44,0)">line 44</a>)] 
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('NMEGraph', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m', 130)" style="font-weight:bold">NMEGraph</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m',130,0)">line 130</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 44)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',44,0)">line 44</a>)
+] 
+  Year  Scientists[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('NMEGraph', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m', 130)" style="font-weight:bold">NMEGraph</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/Pharma/NMEGraph.m',130,0)">line 130</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 44)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',44,0)">line 44</a>)
+] 
+     IdeaTFP
+------------------------------
+  1970        1.00     1.00000
+  1971        1.03     0.77557
+  1972        1.01     0.66128
+  1973        1.04     0.89901
+  1974        1.10     1.27037
+  1975        1.15     1.15802
+  1976        1.15     1.27931
+  1977        1.14     1.45813
+  1978        1.13     1.00741
+  1979        1.18     0.79091
+  1980        1.33     0.59978
+  1981        1.42     1.26636
+  1982        1.63     1.14292
+  1983        1.76     0.53095
+  1984        1.78     0.82589
+  1985        1.90     1.05389
+  1986        2.11     0.63248
+  1987        2.33     0.60162
+  1988        2.59     0.54116
+  1989        2.72     0.53951
+  1990        2.99     0.51314
+  1991        3.38     0.59165
+  1992        3.82     0.45356
+  1993        4.09     0.40762
+  1994        4.11     0.35668
+  1995        4.49     0.41605
+  1996        4.77     0.74004
+  1997        5.10     0.50994
+  1998        5.40     0.37015
+  1999        5.56     0.41930
+  2000        6.06     0.29691
+  2001        6.78     0.23595
+  2002        6.90     0.16425
+  2003        7.38     0.18975
+  2004        7.50     0.31994
+  2005        7.64     0.17447
+  2006        7.86     0.18658
+  2007        8.47     0.14173
+  2008        8.32     0.19241
+  2009        8.39     0.20651
+  2010        8.90     0.15722
+  2011        8.30     0.24096
+  2012        8.19     0.31748
+  2013        8.32     0.21633
+  2014        8.32     0.32856
+  2015        8.94     0.33557
+ 
+The implied average growth rate of scientists is     4.87 percent
+The implied average growth rate of idea TFP   is    -2.43 percent
+The factor decline in idea TFP is    2.980
+      Half life of idea TFP =    28.57 years

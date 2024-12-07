@@ -1,0 +1,319 @@
+SemiconductorTFP_WageGDP                 23-Oct-2024 
+ 
+  SemiconductorTFP
+ 
+    NBER/CES Manufacturing TFP for 334413 (Semiconductor and Related Device Manufacturing)
+     from <a href="matlab:web http://www.nber.org/data/nberces.html">http://www.nber.org/data/nberces.html</a>
+     Becker, Gray, Marvakov update of original Bartelsman and Gray data
+     1958-2011
+ 
+    July 2017 -- See MooresLawRND-2017-07-31.xls
+    for data details.
+ 
+  Nominal data, in millions of dollars
+ 
+   Use Semiconductor TFP growth (smoothed) as output measure
+   and 5-year lag of R&D spending as input measure (w/ and w/o equipment RND)
+
+ 
+ 
+=============================================================
+KEY PARAMETER VALUES:    MasterCase = WageGDP
+   Wage deflator is nominal GDP per person
+             Lambda =  1.0000
+=============================================================
+ 
+ 
+Use this many years to lag RND:
+
+YrsToLag =
+
+     5
+
+
+HPSmoother =
+
+   400
+
+TFP Growth Rates
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 95)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',95,0)">line 95</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+  Year[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 95)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',95,0)">line 95</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+     RawSmoothed
+----------------------
+  1975 -0.0040  0.0869
+  1976  0.1660  0.0854
+  1977  0.1480  0.0836
+  1978  0.1870  0.0816
+  1979  0.1510  0.0794
+  1980  0.0360  0.0775
+  1981  0.0720  0.0765
+  1982  0.0480  0.0769
+  1983  0.0340  0.0790
+  1984  0.0600  0.0833
+  1985 -0.1020  0.0900
+  1986  0.0170  0.0995
+  1987  0.1060  0.1114
+  1988  0.0750  0.1252
+  1989  0.1020  0.1405
+  1990  0.0970  0.1567
+  1991  0.1510  0.1730
+  1992  0.1780  0.1887
+  1993  0.2250  0.2028
+  1994  0.3370  0.2143
+  1995  0.5880  0.2225
+  1996  0.3440  0.2267
+  1997  0.2130  0.2273
+  1998 -0.0740  0.2248
+  1999  0.4420  0.2200
+  2000  0.4550  0.2127
+  2001  0.1530  0.2033
+  2002  0.0270  0.1927
+  2003  0.1630  0.1820
+  2004  0.1940  0.1715
+  2005  0.1010  0.1616
+  2006 -0.0090  0.1530
+  2007  0.1190  0.1458
+  2008  0.0730  0.1401
+  2009 -0.0250  0.1357
+  2010  0.3070  0.1322
+  2011  0.2380  0.1291
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 97)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',97,0)">line 97</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 101)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',101,0)">line 101</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 
+
+BaselineMoore =
+
+     3
+
+
+ans =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Broad (no equip)'}
+
+Start Year:  TFPGrowth=1974-1975    RND=1970
+Final Year:  TFPGrowth=2010-2011    RND=2006
+ 
+
+WageNotes =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+
+Mean smoothed TFP growth for semiconductors =   0.1458
+ 
+ 
+Effective RND:
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 195)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',195,0)">line 195</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+  Year  NarrowNOEQ NarrowEQUIP[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 195)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',195,0)">line 195</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+   BroadNOEQ  BroadEQUIP
+------------------------------------------------------
+  1975        1.00        1.00        1.00        1.00
+  1976        1.04        1.04        1.02        1.02
+  1977        1.19        1.19        1.16        1.16
+  1978        1.30        1.31        1.31        1.31
+  1979        1.45        1.46        1.46        1.46
+  1980        1.43        1.43        1.42        1.42
+  1981        1.47        1.47        1.47        1.47
+  1982        1.64        1.64        1.64        1.64
+  1983        1.72        1.73        1.75        1.77
+  1984        1.65        1.68        1.75        1.77
+  1985        1.81        1.84        1.94        1.97
+  1986        1.84        1.89        1.98        2.02
+  1987        2.27        2.33        2.39        2.44
+  1988        2.50        2.56        2.66        2.72
+  1989        2.91        3.00        3.14        3.22
+  1990        2.93        3.03        3.14        3.23
+  1991        3.30        3.40        3.44        3.53
+  1992        3.60        3.71        3.78        3.87
+  1993        3.60        3.73        3.80        3.91
+  1994        3.48        3.65        3.69        3.83
+  1995        3.71        3.90        3.93        4.09
+  1996        3.95        4.13        4.22        4.37
+  1997        3.91        4.12        4.25        4.43
+  1998        3.91        4.15        4.40        4.60
+  1999        4.02        4.33        4.60        4.87
+  2000        4.01        4.53        4.86        5.30
+  2001        3.55        4.24        4.83        5.42
+  2002        3.41        4.31        5.00        5.76
+  2003        3.36        4.30        5.07        5.87
+  2004        3.43        4.45        5.38        6.25
+  2005        3.31        4.71        6.23        7.43
+  2006        3.08        4.77        5.86        7.30
+  2007        3.13        4.64        5.92        7.21
+  2008        3.09        4.50        6.03        7.22
+  2009        3.00        4.43        6.21        7.43
+  2010        2.86        4.20        6.16        7.30
+  2011        3.10        4.68        7.36        8.70
+ 
+ 
+IDEA TFP:
+ 
+[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 198)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',198,0)">line 198</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+  Year  NarrowNOEQ NarrowEQUIP[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 198)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',198,0)">line 198</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+   BroadNOEQ  BroadEQUIP
+------------------------------------------------------
+  1975        1.00        1.00        1.00        1.00
+  1976        0.94        0.94        0.96        0.96
+  1977        0.81        0.81        0.83        0.83
+  1978        0.72        0.72        0.72        0.72
+  1979        0.63        0.63        0.63        0.62
+  1980        0.62        0.62        0.63        0.63
+  1981        0.60        0.60        0.60        0.60
+  1982        0.54        0.54        0.54        0.54
+  1983        0.53        0.52        0.52        0.51
+  1984        0.58        0.57        0.55        0.54
+  1985        0.57        0.56        0.53        0.52
+  1986        0.62        0.61        0.58        0.57
+  1987        0.56        0.55        0.54        0.53
+  1988        0.58        0.56        0.54        0.53
+  1989        0.56        0.54        0.51        0.50
+  1990        0.62        0.59        0.57        0.56
+  1991        0.60        0.59        0.58        0.56
+  1992        0.60        0.58        0.57        0.56
+  1993        0.65        0.63        0.61        0.60
+  1994        0.71        0.68        0.67        0.64
+  1995        0.69        0.66        0.65        0.63
+  1996        0.66        0.63        0.62        0.60
+  1997        0.67        0.63        0.61        0.59
+  1998        0.66        0.62        0.59        0.56
+  1999        0.63        0.59        0.55        0.52
+  2000        0.61        0.54        0.50        0.46
+  2001        0.66        0.55        0.48        0.43
+  2002        0.65        0.51        0.44        0.39
+  2003        0.62        0.49        0.41        0.36
+  2004        0.58        0.44        0.37        0.32
+  2005        0.56        0.39        0.30        0.25
+  2006        0.57        0.37        0.30        0.24
+  2007        0.54        0.36        0.28        0.23
+  2008        0.52        0.36        0.27        0.22
+  2009        0.52        0.35        0.25        0.21
+  2010        0.53        0.36        0.25        0.21
+  2011        0.48        0.32        0.20        0.17
+ 
+ 
+                 [Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+    Factor[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+      gSci[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+     giTFP  HalfLife[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+      Beta
+-------------------------------------------------------------------
+Narrow (no equip) &         3 &       3.1 &      -2.0 &      33.9 &      0.14\\
+Narrow (w/ equip) &         5 &       4.3 &      -3.2 &      21.7 &      0.22\\
+Broad (no equip)  &         7 &       5.5 &      -4.4 &      15.6 &      0.31\\
+Broad (w/ equip)  &         9 &       6.0 &      -4.9 &      14.1 &      0.34\\
+ 
+                 [Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+    Factor[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+      gSci[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+     giTFP  HalfLife[Warning: Colon operands must be real scalars. This warning will become an error in
+a future release.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('cshow', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m', 59)" style="font-weight:bold">cshow</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/cshow.m',59,0)">line 59</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 208)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',208,0)">line 208</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)
+] 
+      Beta
+-------------------------------------------------------------------
+Narrow (no equip)         3       3.1      -2.0      33.9      0.14
+Narrow (w/ equip)         5       4.3      -3.2      21.7      0.22
+Broad (no equip)          7       5.5      -4.4      15.6      0.31
+Broad (w/ equip)          9       6.0      -4.9      14.1      0.34
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 220)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',220,0)">line 220</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 224)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',224,0)">line 224</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 
+[Warning: printopt will be removed in a future release. To configure printer
+defaults, use the options provided by your operating system.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('printopt', '/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m', 51)" style="font-weight:bold">printopt</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/local/printopt.m',51,0)">line 51</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('figsetup', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m', 10)" style="font-weight:bold">figsetup</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/ChadMatlab/figsetup.m',10,0)">line 10</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 292)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',292,0)">line 292</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 
+[Warning: PostScript format 'psc' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024b.app/toolbox/matlab/graphics/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('SemiconductorTFP', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m', 326)" style="font-weight:bold">SemiconductorTFP</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MooresLaw/SemiconductorTFP.m',326,0)">line 326</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MasterIdeaPF', '/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m', 42)" style="font-weight:bold">MasterIdeaPF</a> (<a href="matlab: opentoline('/Users/charleneramos/Documents/Research/Titan/Bloom et al 2020 - Replication Materials/MasterIdeaPF.m',42,0)">line 42</a>)] 

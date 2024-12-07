@@ -1,0 +1,112 @@
+WageNominalGDP                 23-Oct-2024 
+ 
+  WageNominalGDP.m
+ 
+    For now, we are going to use nominal GDP per person for the wage series
+    to deflate R&D spending. After all, model says we want something rising
+    with A = LA TFP in the economy.
+ 
+    Note well: Any wage program should save the following three variables
+      WageYears=(1929:2015)'
+      WageScientist=NominalGDPperPerson;
+      WageNotes={'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+    into the .mat file WageScientistData.mat
+ 
+    That way we can easily change the wage deflator by just running a different wage program
+    and then rerunning the idea TFP programs.
+
+Nominal GDP Per Person
+    1929     858
+    1930     748
+    1931     623
+    1932     476
+    1933     455
+    1934     528
+    1935     583
+    1936     662
+    1937     721
+    1938     672
+    1939     714
+    1940     779
+    1941     970
+    1942    1231
+    1943    1485
+    1944    1623
+    1945    1631
+    1946    1611
+    1947    1734
+    1948    1874
+    1949    1829
+    1950    1979
+    1951    2251
+    1952    2343
+    1953    2442
+    1954    2408
+    1955    2579
+    1956    2676
+    1957    2773
+    1958    2768
+    1959    2950
+    1960    3006
+    1961    3066
+    1962    3243
+    1963    3373
+    1964    3573
+    1965    3827
+    1966    4145
+    1967    4336
+    1968    4695
+    1969    5031
+    1970    5246
+    1971    5623
+    1972    6109
+    1973    6740
+    1974    7241
+    1975    7820
+    1976    8609
+    1977    9469
+    1978   10585
+    1979   11693
+    1980   12570
+    1981   13960
+    1982   14405
+    1983   15525
+    1984   17093
+    1985   18225
+    1986   19072
+    1987   20055
+    1988   21434
+    1989   22870
+    1990   23901
+    1991   24352
+    1992   25452
+    1993   26428
+    1994   27742
+    1995   28749
+    1996   30033
+    1997   31538
+    1998   32914
+    1999   34585
+    2000   36420
+    2001   37240
+    2002   38122
+    2003   39607
+    2004   41856
+    2005   44237
+    2006   46369
+    2007   47987
+    2008   48330
+    2009   46930
+    2010   48302
+    2011   49710
+    2012   51370
+    2013   52599
+    2014   54343
+    2015   55787
+
+WageNotes =
+
+  1×1 <a href="matlab:helpPopup('cell')" style="font-weight:bold">cell</a> array
+
+    {'Currently using Nominal GDP per Person from NIPA for the wage deflator'}
+
